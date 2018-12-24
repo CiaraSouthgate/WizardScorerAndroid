@@ -1,13 +1,23 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static android.support.design.widget.Snackbar.LENGTH_LONG;
+import static android.support.design.widget.Snackbar.LENGTH_SHORT;
+
 public class PlayerSetup extends AppCompatActivity {
+    Button startButton;
 
     EditText Player1;
     EditText Player2;
@@ -16,7 +26,7 @@ public class PlayerSetup extends AppCompatActivity {
     EditText Player5;
     EditText Player6;
 
-    TextView errorMessage;
+    CoordinatorLayout snackbar;
 
     int playerCount;
 
@@ -32,7 +42,9 @@ public class PlayerSetup extends AppCompatActivity {
         Player5 = findViewById(R.id.Player5);
         Player6 = findViewById(R.id.Player6);
 
-        errorMessage = findViewById(R.id.errorMessage);
+        startButton = findViewById(R.id.startButton);
+
+        snackbar = findViewById(R.id.error);
 
         playerCount = 3;
     }
@@ -41,18 +53,18 @@ public class PlayerSetup extends AppCompatActivity {
         switch (playerCount) {
             case 3:
                 Player4.setVisibility(View.VISIBLE);
-                errorMessage.setVisibility(View.GONE);
                 playerCount++;
                 break;
             case 4:
                 Player5.setVisibility(View.VISIBLE);
-                errorMessage.setVisibility(View.GONE);
                 playerCount++;
                 break;
             case 5:
                 Player6.setVisibility(View.VISIBLE);
-                errorMessage.setVisibility(View.GONE);
                 playerCount++;
+                break;
+            case 6:
+                Snackbar.make(snackbar, R.string.max_players, LENGTH_LONG).show();
                 break;
             default:
                 break;
@@ -61,21 +73,21 @@ public class PlayerSetup extends AppCompatActivity {
 
     public void removePlayer(View v) {
         switch (playerCount) {
+            case 3:
+                Snackbar.make(snackbar, R.string.min_players, LENGTH_LONG).show();
+                break;
             case 4:
                 Player4.setVisibility(View.GONE);
-                errorMessage.setVisibility(View.GONE);
                 Player4.setText("");
                 playerCount--;
                 break;
             case 5:
                 Player5.setVisibility(View.GONE);
-                errorMessage.setVisibility(View.GONE);
                 Player5.setText("");
                 playerCount--;
                 break;
             case 6:
                 Player6.setVisibility(View.GONE);
-                errorMessage.setVisibility(View.GONE);
                 Player6.setText("");
                 playerCount--;
                 break;
@@ -105,8 +117,8 @@ public class PlayerSetup extends AppCompatActivity {
 
         for (String s : playerNames) {
             if (s.equals("")) {
-                errorMessage.setVisibility(View.VISIBLE);
                 empty = true;
+                Snackbar.make(snackbar, R.string.playerNameError, LENGTH_LONG).show();
                 break;
             }
         }
@@ -115,7 +127,7 @@ public class PlayerSetup extends AppCompatActivity {
             for (int i = 0; i < playerNames.length; i++) {
                 players[i] = new Player(playerNames[i]);
                 Game game = new Game(players);
-                Intent intent = new Intent(this, Round.class);
+                Intent intent = new Intent(this, ScorePad.class);
                 intent.putExtra("game", game);
                 startActivity(intent);
             }

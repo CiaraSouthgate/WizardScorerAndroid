@@ -4,10 +4,12 @@
     <string name="players">Players</string>
     <string name="name">Name</string>
     <string name="start">Start</string>
-    <string name="playerNameError">All players must have names!</string>
+    <string name="playerNameError">All players must have names</string>
     <string name="minus">-</string>
     <string name="plus">+</string>
     <string name="round">Round</string>
     <string name="of">of</string>
     <string name="next_round">Next Round</string>
+    <string name="max_players">Maximum player count is 6</string>
+    <string name="min_players">Minimum player count is 3</string>
 </resources>

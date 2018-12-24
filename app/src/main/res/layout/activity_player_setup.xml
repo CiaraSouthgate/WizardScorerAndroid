@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayerSetup">
+    tools:context=".PlayerSetup"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
 
     <ScrollView
         android:id="@+id/scroll"
@@ -39,8 +41,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
                 android:text="@string/players"
-                android:textAllCaps="true"
-                android:textColor="#FFFFFF"
+                android:textAllCaps="false"
+                android:textColor="#000000"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,11 +70,14 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:background="@drawable/edit_text_selector"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
+                        android:nextFocusLeft="@id/Player2"
+                        android:nextFocusDown="@id/Player2"
+                        android:nextFocusForward="@id/Player2"
                         android:padding="3sp"
                         android:text=""
                         android:textAlignment="center"
@@ -91,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:background="@drawable/edit_text_selector"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
@@ -114,7 +119,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:background="@drawable/edit_text_selector"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
@@ -137,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:background="@drawable/edit_text_selector"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
@@ -161,7 +166,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:background="@drawable/edit_text_selector"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
@@ -185,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:background="@drawable/edit_text_selector"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
@@ -223,6 +228,7 @@
                     android:onClick="startButton"
                     android:paddingBottom="3sp"
                     android:text="@string/start"
+                    android:textColor="#FFFFFF"
                     android:textSize="30sp" />
 
                 <ImageButton
@@ -251,20 +257,21 @@
 
             </FrameLayout>
 
-            <TextView
-                android:id="@+id/errorMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
-                android:fontFamily="@font/open_sans_semibold"
-                android:text="@string/playerNameError"
-                android:textSize="18sp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
-
         </LinearLayout>
     </ScrollView>
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </android.support.constraint.ConstraintLayout>

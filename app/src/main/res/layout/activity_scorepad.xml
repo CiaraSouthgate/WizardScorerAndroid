@@ -7,125 +7,119 @@
     tools:context=".ScorePad">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="567dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TableLayout
+            android:id="@+id/scorepadTable"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="1,2,3,4,5,6">
+            android:layout_height="wrap_content">
 
             <TableRow
+                android:id="@+id/namesRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/blank"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cell_shape"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/player1"
-                    android:layout_width="match_parent"
+                    android:id="@+id/p1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:background="@drawable/cell_shape"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/lato"
-                    android:padding="3sp"
+                    android:gravity="center"
                     android:text="Name"
-                    android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/player2"
-                    android:layout_width="match_parent"
+                    android:id="@+id/p2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
-                    android:background="@drawable/cell_shape"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/lato"
-                    android:padding="3sp"
+                    android:gravity="center"
                     android:text="Name"
-                    android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/player3"
-                    android:layout_width="match_parent"
+                    android:id="@+id/p3"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="3"
-                    android:background="@drawable/cell_shape"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/lato"
-                    android:padding="3sp"
+                    android:gravity="center"
                     android:text="Name"
-                    android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/player4"
-                    android:layout_width="match_parent"
+                    android:id="@+id/p4"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="4"
-                    android:background="@drawable/cell_shape"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/lato"
-                    android:padding="3sp"
+                    android:gravity="center"
                     android:text="Name"
-                    android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/player5"
-                    android:layout_width="match_parent"
+                    android:id="@+id/p5"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="5"
-                    android:background="@drawable/cell_shape"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/lato"
-                    android:padding="3sp"
+                    android:gravity="center"
                     android:text="Name"
-                    android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/player6"
-                    android:layout_width="match_parent"
+                    android:id="@+id/p6"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="6"
-                    android:background="@drawable/cell_shape"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/lato"
-                    android:padding="3sp"
+                    android:gravity="center"
                     android:text="Name"
-                    android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="18sp" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" >
 
                 <TextView
                     android:id="@+id/r1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_semibold"
+                    android:layout_column="0"
+                    android:layout_gravity="center_vertical|end"
+                    android:fontFamily="@font/lato_bold"
                     android:text="1"
                     android:textColor="#000000"
                     android:textSize="24sp" />
             </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </TableLayout>
     </ScrollView>
 
