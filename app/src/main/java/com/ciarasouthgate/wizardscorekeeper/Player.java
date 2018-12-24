@@ -1,6 +1,9 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
-public class Player implements Comparable<Player>{
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Player implements Comparable<Player>, Parcelable {
     private final String name;
     private int score;
     private int bid;
@@ -51,4 +54,39 @@ public class Player implements Comparable<Player>{
     public String toString() {
         return name + ": " + score;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(score);
+        dest.writeInt(bid);
+        dest.writeInt(taken);
+    }
+
+    private Player(Parcel in) {
+        name = in.readString();
+        score = in.readInt();
+        bid = in.readInt();
+        taken = in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Parcelable.Creator<Player> CREATOR
+            = new Parcelable.Creator<Player>() {
+
+        @Override
+        public Player createFromParcel(Parcel in) {
+            return new Player(in);
+        }
+
+        // We just need to copy this and change the type to match our class.
+        @Override
+        public Player[] newArray(int size) {
+            return new Player[size];
+        }
+    };
 }

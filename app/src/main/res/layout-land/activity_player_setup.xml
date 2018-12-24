@@ -6,11 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".PlayerSetup">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200sp"
+        android:layout_height="135sp"
+        android:layout_gravity="start"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/wizardlogo" />
+
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,27 +33,14 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="150sp"
-                android:layout_marginStart="8sp"
-                android:layout_marginEnd="8sp"
-                android:contentDescription="@string/logo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/wizardlogo" />
-
             <TextView
                 android:id="@+id/PlayersTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato"
+                android:fontFamily="@font/open_sans_semibold"
                 android:text="@string/players"
-                android:textAllCaps="true"
                 android:textColor="#FFFFFF"
-                android:textSize="36sp"
+                android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/logo" />
@@ -50,30 +49,28 @@
                 android:id="@+id/playerTable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/PlayersTitle">
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:gravity="center">
+                    android:layout_height="match_parent">
 
                     <EditText
                         android:id="@+id/Player1"
                         android:layout_width="250sp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="8sp"
+                        android:layout_marginEnd="8sp"
+                        android:background="#FFFFFF"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
-                        android:padding="3sp"
+                        android:padding="5sp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="#000000"
@@ -82,21 +79,22 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
+                    android:layout_height="match_parent">
 
                     <EditText
                         android:id="@+id/Player2"
                         android:layout_width="250sp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="8sp"
+                        android:layout_marginEnd="8sp"
+                        android:background="#FFFFFF"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
-                        android:padding="3sp"
+                        android:padding="5sp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="#000000"
@@ -105,21 +103,22 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
+                    android:layout_height="match_parent">
 
                     <EditText
                         android:id="@+id/Player3"
                         android:layout_width="250sp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="8sp"
+                        android:layout_marginEnd="8sp"
+                        android:background="#FFFFFF"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
-                        android:padding="3sp"
+                        android:padding="5sp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="#000000"
@@ -128,21 +127,22 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
+                    android:layout_height="match_parent">
 
                     <EditText
                         android:id="@+id/Player4"
                         android:layout_width="250sp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="8sp"
+                        android:layout_marginEnd="8sp"
+                        android:background="#FFFFFF"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
-                        android:padding="3sp"
+                        android:padding="5sp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="#000000"
@@ -152,21 +152,22 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
+                    android:layout_height="match_parent">
 
                     <EditText
                         android:id="@+id/Player5"
                         android:layout_width="250sp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="8sp"
+                        android:layout_marginEnd="8sp"
+                        android:background="#FFFFFF"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
-                        android:padding="3sp"
+                        android:padding="5sp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="#000000"
@@ -176,21 +177,22 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
+                    android:layout_height="match_parent">
 
                     <EditText
                         android:id="@+id/Player6"
                         android:layout_width="250sp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_style"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="8sp"
+                        android:layout_marginEnd="8sp"
+                        android:background="#FFFFFF"
                         android:ems="10"
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
-                        android:padding="3sp"
+                        android:padding="5sp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="#000000"
@@ -216,38 +218,30 @@
                 <Button
                     android:id="@+id/startButton"
                     android:layout_width="115sp"
-                    android:layout_height="55sp"
+                    android:layout_height="60sp"
                     android:layout_gravity="center"
-                    android:background="@drawable/button_style"
-                    android:fontFamily="@font/lato_bold"
+                    android:fontFamily="@font/open_sans_semibold"
                     android:onClick="startButton"
-                    android:paddingBottom="3sp"
                     android:text="@string/start"
-                    android:textSize="30sp" />
+                    android:textSize="18sp" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/removePlayer"
-                    android:layout_width="55sp"
-                    android:layout_height="55sp"
+                    android:layout_width="60sp"
+                    android:layout_height="60sp"
                     android:layout_gravity="start|center_vertical"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/button_style"
                     android:onClick="removePlayer"
-                    android:padding="12sp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/remove" />
+                    android:text="@string/minus"
+                    android:textSize="24sp" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/addPlayer"
-                    android:layout_width="55sp"
-                    android:layout_height="55sp"
+                    android:layout_width="60sp"
+                    android:layout_height="60sp"
                     android:layout_gravity="end|center_vertical"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/button_style"
                     android:onClick="addPlayer"
-                    android:padding="12sp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/add" />
+                    android:text="@string/plus"
+                    android:textSize="24sp" />
 
             </FrameLayout>
 
@@ -263,7 +257,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
-
         </LinearLayout>
     </ScrollView>
 
