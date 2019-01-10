@@ -5,24 +5,31 @@ import android.os.Parcelable;
 
 public class Game implements Parcelable {
     private Player[] players;
+    private Round[] rounds;
     private int current = 1;
-    private int rounds;
+    private int roundsNo;
+
 
     public Game(Player[] players) {
         this.players = players;
         switch (players.length) {
             case 3:
-                rounds = 20;
+                roundsNo = 20;
                 break;
             case 4:
-                rounds = 15;
+                roundsNo = 15;
                 break;
             case 5:
-                rounds = 12;
+                roundsNo = 12;
                 break;
             case 6:
-                rounds = 10;
+                roundsNo = 10;
                 break;
+        }
+        rounds = new Round[roundsNo];
+
+        for (int i = 0; i < roundsNo; i++) {
+            rounds[i] = new Round(players);
         }
     }
 
@@ -34,8 +41,8 @@ public class Game implements Parcelable {
         return current;
     }
 
-    public int getRounds() {
-        return rounds;
+    public int getRoundsNo() {
+        return roundsNo;
     }
 
     public void nextRound() {
@@ -45,12 +52,14 @@ public class Game implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeTypedArray(players, flags);
-        dest.writeInt(rounds);
+        dest.writeTypedArray(rounds, flags);
+        dest.writeInt(roundsNo);
     }
 
     private Game(Parcel in) {
         players = in.createTypedArray(Player.CREATOR);
-        rounds = in.readInt();
+        rounds = in.createTypedArray(Round.CREATOR);
+        roundsNo = in.readInt();
     }
 
     @Override

@@ -7,7 +7,7 @@ public class Player implements Comparable<Player>, Parcelable {
     private final String name;
     private int score;
     private int bid;
-    private int taken;
+    private int actual;
 
     public Player(String setName) {
         name = setName;
@@ -18,8 +18,8 @@ public class Player implements Comparable<Player>, Parcelable {
         this.bid = bid;
     }
 
-    public void setTaken(int taken) {
-        this.taken = taken;
+    public void setActual(int actual) {
+        this.actual = actual;
     }
 
     public String getName() {
@@ -34,8 +34,8 @@ public class Player implements Comparable<Player>, Parcelable {
         return bid;
     }
 
-    public int getTaken() {
-        return taken;
+    public int getActual() {
+        return actual;
     }
 
     public void changeScore(int n) {
@@ -60,14 +60,14 @@ public class Player implements Comparable<Player>, Parcelable {
         dest.writeString(name);
         dest.writeInt(score);
         dest.writeInt(bid);
-        dest.writeInt(taken);
+        dest.writeInt(actual);
     }
 
     private Player(Parcel in) {
         name = in.readString();
         score = in.readInt();
         bid = in.readInt();
-        taken = in.readInt();
+        actual = in.readInt();
     }
 
     @Override

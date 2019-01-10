@@ -9,10 +9,12 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintVertical_bias="0.0">
 
         <TableLayout
             android:id="@+id/scorepadTable"
@@ -24,93 +26,318 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/p1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="25sp"
+                    android:layout_height="30sp"
+                    android:layout_column="0"
+                    android:background="@drawable/cell_shape"
+                    android:onClick="showHelp"
+                    android:padding="4sp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/question" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_column="1"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/lato"
-                    android:gravity="center"
-                    android:text="Name"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    tools:layout_width="80sp"
+                    tools:layout_height="30sp">
 
-                <TextView
-                    android:id="@+id/p2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/p1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_gravity="fill_vertical|fill_horizontal"
+                        android:background="@drawable/cell_shape"
+                        android:fontFamily="@font/lato"
+                        android:gravity="fill_vertical|fill_horizontal"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        tools:text="Name"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_column="2"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/lato"
-                    android:gravity="center"
-                    android:text="Name"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    tools:layout_width="80sp"
+                    tools:layout_height="30sp">
 
-                <TextView
-                    android:id="@+id/p3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/p2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_gravity="fill"
+                        android:background="@drawable/cell_shape"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center"
+                        tools:text="Name"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_column="3"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/lato"
-                    android:gravity="center"
-                    android:text="Name"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    tools:layout_width="80sp"
+                    tools:layout_height="30sp">
 
-                <TextView
-                    android:id="@+id/p4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/p3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="3"
+                        android:layout_gravity="fill"
+                        android:background="@drawable/cell_shape"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center"
+                        tools:text="Name"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_column="4"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/lato"
-                    android:gravity="center"
-                    android:text="Name"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    tools:layout_width="80sp"
+                    tools:layout_height="30sp">
 
-                <TextView
-                    android:id="@+id/p5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/p4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="4"
+                        android:layout_gravity="fill"
+                        android:background="@drawable/cell_shape"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center"
+                        tools:text="Name"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_column="5"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/lato"
-                    android:gravity="center"
-                    android:text="Name"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    tools:layout_width="80sp"
+                    tools:layout_height="30sp">
 
-                <TextView
-                    android:id="@+id/p6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/p5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="5"
+                        android:layout_gravity="fill"
+                        android:background="@drawable/cell_shape"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center"
+                        tools:text="Name"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_column="6"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/lato"
-                    android:gravity="center"
-                    android:text="Name"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    tools:layout_width="80sp"
+                    tools:layout_height="30sp">
+
+                    <TextView
+                        android:id="@+id/p6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="6"
+                        android:layout_gravity="fill"
+                        android:background="@drawable/cell_shape"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center"
+                        tools:text="Name"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                </android.support.constraint.ConstraintLayout>
+
             </TableRow>
 
             <TableRow
+                android:id="@+id/round1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="fill_horizontal">
 
                 <TextView
                     android:id="@+id/r1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="30sp"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
-                    android:layout_gravity="center_vertical|end"
+                    android:layout_gravity="fill_vertical|fill_horizontal"
+                    android:background="@drawable/cell_shape"
                     android:fontFamily="@font/lato_bold"
+                    android:gravity="center|end"
+                    android:paddingStart="5sp"
+                    android:paddingTop="10sp"
+                    android:paddingEnd="5sp"
+                    android:paddingBottom="10sp"
                     android:text="1"
                     android:textColor="#000000"
                     android:textSize="24sp" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/r1p1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="1">
+
+                    <TextView
+                        android:id="@+id/r1p1b"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/cell_shape"
+                        android:gravity="center"
+                        tools:text="B"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        app:layout_constraintHeight_percent=".5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".35" />
+
+                    <TextView
+                        android:id="@+id/r1p1a"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/cell_shape"
+                        android:gravity="center"
+                        tools:text="A"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        app:layout_constraintHeight_percent=".5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/r1p1b"
+                        app:layout_constraintWidth_percent=".35" />
+
+                    <TextView
+                        android:id="@+id/r1p1s"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cell_shape"
+                        android:gravity="center"
+                        tools:text="SC"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="1"
+                        app:layout_constraintStart_toEndOf="@+id/r1p1b"
+                        app:layout_constraintWidth_percent=".65" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/r1p2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="2">
+
+                    <TextView
+                        android:id="@+id/r1p2b"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/cell_shape"
+                        android:gravity="center"
+                        tools:text="B"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        app:layout_constraintHeight_percent=".5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".35" />
+
+                    <TextView
+                        android:id="@+id/r1p2a"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/cell_shape"
+                        android:gravity="center"
+                        tools:text="A"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        app:layout_constraintHeight_percent=".5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/r1p2b"
+                        app:layout_constraintWidth_percent=".35" />
+
+                    <TextView
+                        android:id="@+id/r1p2s"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cell_shape"
+                        android:gravity="center"
+                        tools:text="SC"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="1"
+                        app:layout_constraintStart_toEndOf="@+id/r1p2b"
+                        app:layout_constraintWidth_percent=".65" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/r1p3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="2">
+
+                    <TextView
+                        android:id="@+id/r1p3b"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/cell_shape"
+                        android:gravity="center"
+                        tools:text="B"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        app:layout_constraintHeight_percent=".5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".35" />
+
+                    <TextView
+                        android:id="@+id/r1p3a"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/cell_shape"
+                        android:gravity="center"
+                        tools:text="A"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        app:layout_constraintHeight_percent=".5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/r1p3b"
+                        app:layout_constraintWidth_percent=".35" />
+
+                    <TextView
+                        android:id="@+id/r1p3s"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cell_shape"
+                        android:gravity="center"
+                        tools:text="SC"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="1"
+                        app:layout_constraintStart_toEndOf="@+id/r1p3b"
+                        app:layout_constraintWidth_percent=".65" />
+                </android.support.constraint.ConstraintLayout>
+
             </TableRow>
 
             <TableRow
@@ -122,5 +349,46 @@
                 android:layout_height="match_parent" />
         </TableLayout>
     </ScrollView>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/help_style"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/legend"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/legend" />
+
+        <Button
+            android:id="@+id/helpOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:onClick="hideHelp"
+            android:text="OK"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/legend" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

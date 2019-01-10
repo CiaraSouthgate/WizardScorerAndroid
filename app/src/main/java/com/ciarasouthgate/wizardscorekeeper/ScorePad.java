@@ -1,5 +1,6 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +10,15 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class ScorePad extends AppCompatActivity {
+    final int MAX_PLAYERS = 6;
+
     Game game;
     Player[] players;
 
     TableLayout table;
     TableRow namesRow;
+
+    ConstraintLayout help;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,7 @@ public class ScorePad extends AppCompatActivity {
         setContentView(R.layout.activity_scorepad);
 
         table = findViewById(R.id.scorepadTable);
+        help = findViewById(R.id.help);
 
         setNames();
         collapseColumns();
@@ -31,9 +37,9 @@ public class ScorePad extends AppCompatActivity {
 
     public void setNames() {
         namesRow = findViewById(R.id.namesRow);
-        for (int i = 0; i < players.length; i++) {
+        for (int i = 1; i <= players.length; i++) {
             View view = namesRow.getChildAt(i);
-            String current = players[i].getName();
+            String current = players[i - 1].getName();
             if (view instanceof TextView) {
                 TextView name = (TextView) view;
                 name.setText(current);
@@ -42,11 +48,19 @@ public class ScorePad extends AppCompatActivity {
     }
 
     public void collapseColumns() {
-        for (int i = players.length + 1; i <= 6; i++) {
+        for (int i = players.length + 1; i <= MAX_PLAYERS; i++) {
             table.setColumnCollapsed(i, true);
         }
         for (int i = 1; i <= players.length; i++) {
             table.setColumnStretchable(i, true);
         }
+    }
+
+    public void showHelp(View v) {
+        help.setVisibility(View.VISIBLE);
+    }
+
+    public void hideHelp(View v) {
+        help.setVisibility(View.GONE);
     }
 }

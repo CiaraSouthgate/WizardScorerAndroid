@@ -6,11 +6,11 @@
         android:allowBackup="true"
         android:icon="@drawable/wizardlogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/wizardlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".PlayerSetup"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".PlayerSetup">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,8 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ScorePad"></activity>
+        <activity android:name=".ScorePad" />
+        <activity android:name=".RoundSetup"></activity>
     </application>
 
 </manifest>
