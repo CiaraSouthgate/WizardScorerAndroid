@@ -12,4 +12,16 @@
     <string name="next_round">Next Round</string>
     <string name="max_players">Maximum player count is 6</string>
     <string name="min_players">Minimum player count is 3</string>
+    <string name="scorepad_legend">Scorepad legend</string>
+    <string name="ok">OK</string>
+    <string name="info_icon">Info icon</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="dealer_icon">Dealer icon</string>
+    <string name="dealer">Dealer</string>
+    <string name="enter_bids">Enter bids</string>
+    <string name="player_bid">Player bid</string>
 </resources>

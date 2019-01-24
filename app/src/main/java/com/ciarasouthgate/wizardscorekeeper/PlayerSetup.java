@@ -127,7 +127,7 @@ public class PlayerSetup extends AppCompatActivity {
             for (int i = 0; i < playerNames.length; i++) {
                 players[i] = new Player(playerNames[i]);
                 Game game = new Game(players);
-                Intent intent = new Intent(this, ScorePad.class);
+                Intent intent = new Intent(this, RoundSetup.class);
                 intent.putExtra("game", game);
                 startActivity(intent);
             }
