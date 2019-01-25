@@ -52,7 +52,7 @@ public class Tricks extends AppCompatActivity {
         dealer = players[dealerInt];
 
         roundTitle = findViewById(R.id.roundTitle);
-        dealerName = findViewById(R.id.winnerName);
+        dealerName = findViewById(R.id.dealerName);
         trickTable = findViewById(R.id.tricksTable);
         trickTotal = findViewById(R.id.trickTotal);
         nextRound = findViewById(R.id.nextRoundButton);

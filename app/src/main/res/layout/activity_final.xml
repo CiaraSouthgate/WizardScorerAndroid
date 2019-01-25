@@ -366,7 +366,7 @@
                 android:paddingBottom="3sp"
                 android:text="@string/new_game"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scoresTable" />

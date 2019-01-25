@@ -625,7 +625,7 @@
                 android:paddingBottom="3sp"
                 android:text="Next round"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/backButton"
                 app:layout_constraintTop_toBottomOf="@+id/tricksTable" />
@@ -647,7 +647,7 @@
                 android:paddingBottom="3sp"
                 android:text="Edit bids"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 app:layout_constraintEnd_toStartOf="@+id/nextRoundButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tricksTable" />
