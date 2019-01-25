@@ -2,16 +2,22 @@ package com.ciarasouthgate.wizardscorekeeper;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class RoundSetup extends AppCompatActivity {
+import static android.support.design.widget.Snackbar.LENGTH_LONG;
+
+public class Bids extends AppCompatActivity {
     private Game game;
     private Player[] players;
     private Player dealer;
@@ -29,52 +35,40 @@ public class RoundSetup extends AppCompatActivity {
     private TableLayout bidTable;
     private TextView bidTotal;
 
+    CoordinatorLayout snackbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_round_setup);
+        setContentView(R.layout.activity_bids);
 
         game = getIntent().getParcelableExtra("game");
         players = game.getPlayers();
         currentRound = game.getCurrent();
-        totalRounds = game.getRoundsNo();
-        dealerInt = totalRounds % currentRound;
+        totalRounds = game.getTotalRounds();
+        dealerInt = (currentRound - 1) % players.length;
         dealer = players[dealerInt];
 
         roundTitle = findViewById(R.id.roundTitle);
         dealerName = findViewById(R.id.dealerName);
-        bidTable = findViewById(R.id.bidTable);
+        bidTable = findViewById(R.id.bidsTable);
         bidTotal = findViewById(R.id.bidTotal);
 
         playerNames = new TextView[players.length];
         playerScores = new TextView[players.length];
         bids = new EditText[players.length];
 
+        snackbar = findViewById(R.id.error);
+
         rows = new TableRow[6];
 
-        String roundString = "Round " + currentRound;
+        String roundString = "Round " + currentRound + " of " + totalRounds;
         roundTitle.setText(roundString);
 
         setArrays();
         setPlayers();
         showRows();
-
-        for (EditText e : bids) {
-            e.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    int sum = 0;
-                    for (EditText b : bids) {
-                        String bidString = b.getText().toString();
-                        if (!bidString.equals("")) {
-                            int bid = Integer.parseInt(bidString);
-                            sum += bid;
-                        }
-                    }
-                    bidTotal.setText(Integer.toString(sum));
-                }
-            });
-        }
+        setBoxListeners();
     }
 
     private void setArrays() {
@@ -116,13 +110,78 @@ public class RoundSetup extends AppCompatActivity {
         }
     }
 
+    private void setBoxListeners() {
+        for (EditText e : bids) {
+            e.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    updateTotals();
+                }
+            });
+
+            e.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        updateTotals();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
+    }
+
+    private void updateTotals() {
+        int sum = 0;
+        for (EditText b : bids) {
+            String bidString = b.getText().toString();
+            if (!bidString.equals("")) {
+                int bid = Integer.parseInt(bidString);
+                sum += bid;
+            }
+        }
+        bidTotal.setText(Integer.toString(sum));
+    }
+
+    public void continueButton(View v) {
+        boolean empty = false;
+        for (int i = 0; i < bids.length; i++) {
+            EditText current = bids[i];
+            if (current.getText().toString().equals("")) {
+                empty = true;
+                Snackbar.make(snackbar, R.string.bidError, LENGTH_LONG).show();
+                break;
+            }
+        }
+
+        if (!empty) {
+            getBids();
+            toTricks();
+        }
+    }
+
+    public void getBids(){
+        for (int i = 1; i <= players.length; i++) {
+            Player current = players[(dealerInt + i) % players.length];
+            String bidString = bids[i - 1].getText().toString();
+            int bid = Integer.parseInt(bidString);
+            current.setBid(bid);
+        }
+    }
+
+    public void toTricks(){
+        Intent intent = new Intent(this, Tricks.class);
+        intent.putExtra("game", game);
+        startActivity(intent);
+    }
+
     public void onBackPressed() {
         backButtonHandler();
-        return;
     }
 
     public void backButtonHandler() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(RoundSetup.this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(Bids.this);
         alert.setTitle("End game?");
         alert.setMessage("Do you want to end the current game " +
                 "and return to the player setup screen?");

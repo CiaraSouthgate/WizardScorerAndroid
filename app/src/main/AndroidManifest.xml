@@ -9,8 +9,10 @@
         android:roundIcon="@drawable/wizardlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".PlayerSetup">
+        <activity android:name=".Final"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".PlayerSetup"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +24,10 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ScorePad" />
-        <activity android:name=".RoundSetup"></activity>
+        <activity android:name=".Bids"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Tricks"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

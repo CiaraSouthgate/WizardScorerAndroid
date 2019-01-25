@@ -5,31 +5,27 @@ import android.os.Parcelable;
 
 public class Game implements Parcelable {
     private Player[] players;
-    private Round[] rounds;
-    private int current = 1;
-    private int roundsNo;
-
+    private int current;
+    private int totalRounds;
+    private boolean dealerAllowedEqual;
 
     public Game(Player[] players) {
+        current = 1;
+        dealerAllowedEqual = true;
         this.players = players;
         switch (players.length) {
             case 3:
-                roundsNo = 20;
+                totalRounds = 20;
                 break;
             case 4:
-                roundsNo = 15;
+                totalRounds = 15;
                 break;
             case 5:
-                roundsNo = 12;
+                totalRounds = 12;
                 break;
             case 6:
-                roundsNo = 10;
+                totalRounds = 10;
                 break;
-        }
-        rounds = new Round[roundsNo];
-
-        for (int i = 0; i < roundsNo; i++) {
-            rounds[i] = new Round(players);
         }
     }
 
@@ -41,8 +37,8 @@ public class Game implements Parcelable {
         return current;
     }
 
-    public int getRoundsNo() {
-        return roundsNo;
+    public int getTotalRounds() {
+        return totalRounds;
     }
 
     public void nextRound() {
@@ -52,14 +48,16 @@ public class Game implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeTypedArray(players, flags);
-        dest.writeTypedArray(rounds, flags);
-        dest.writeInt(roundsNo);
+        dest.writeInt(current);
+        dest.writeInt(totalRounds);
+        dest.writeInt(dealerAllowedEqual ? 1 : 0);
     }
 
     private Game(Parcel in) {
         players = in.createTypedArray(Player.CREATOR);
-        rounds = in.createTypedArray(Round.CREATOR);
-        roundsNo = in.readInt();
+        current = in.readInt();
+        totalRounds = in.readInt();
+        dealerAllowedEqual = (in.readInt() == 0) ? false : true;
     }
 
     @Override

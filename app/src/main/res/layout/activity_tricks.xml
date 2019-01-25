@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tricks">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/dealer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/lato"
+                android:text="@string/dealer"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/dealerIcon"
+                app:layout_constraintEnd_toEndOf="@+id/dealerName"
+                app:layout_constraintStart_toStartOf="@+id/dealerName"
+                app:layout_constraintTop_toBottomOf="@+id/dealerName" />
+
+            <TextView
+                android:id="@+id/roundTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Round 1 of 10" />
+
+            <ImageView
+                android:id="@+id/dealerIcon"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/dealer_icon"
+                app:layout_constraintEnd_toStartOf="@+id/dealerName"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tricksTitle"
+                app:srcCompat="@drawable/card" />
+
+            <TextView
+                android:id="@+id/dealerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:maxWidth="250sp"
+                android:minWidth="60sp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dealerIcon"
+                app:layout_constraintTop_toTopOf="@id/dealerIcon"
+                tools:text="Player" />
+
+            <TextView
+                android:id="@+id/tricksTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/lato"
+                android:text="Enter Tricks"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="42sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/roundTitle" />
+
+            <TableLayout
+                android:id="@+id/tricksTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dealerIcon">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/currentScoreTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginStart="10sp"
+                        android:fontFamily="@font/lato"
+                        android:text="Score"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/bidColLabel"
+                        android:layout_width="50sp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:fontFamily="@font/lato"
+                        android:gravity="bottom"
+                        android:text="Bid"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/takenColLabel"
+                        android:layout_width="50sp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:fontFamily="@font/lato"
+                        android:gravity="bottom"
+                        android:text="Took"
+                        android:textAlignment="center" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/player1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/bidp1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <EditText
+                        android:id="@+id/tricksp1"
+                        android:layout_width="75sp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="2sp"
+                        android:layout_marginBottom="2sp"
+                        android:background="@drawable/edit_text_selector"
+                        android:ems="10"
+                        android:fontFamily="@font/roboto"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        tools:targetApi="o" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/player2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp2"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/bidp2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <EditText
+                        android:id="@+id/tricksp2"
+                        android:layout_width="75sp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="2sp"
+                        android:layout_marginBottom="2sp"
+                        android:background="@drawable/edit_text_selector"
+                        android:ems="10"
+                        android:fontFamily="@font/roboto"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        tools:targetApi="o" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/player3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp3"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/bidp3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <EditText
+                        android:id="@+id/tricksp3"
+                        android:layout_width="75sp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="2sp"
+                        android:layout_marginBottom="2sp"
+                        android:background="@drawable/edit_text_selector"
+                        android:ems="10"
+                        android:fontFamily="@font/roboto"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        tools:targetApi="o" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/player4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp4"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/bidp4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <EditText
+                        android:id="@+id/tricksp4"
+                        android:layout_width="75sp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="2sp"
+                        android:layout_marginBottom="2sp"
+                        android:background="@drawable/edit_text_selector"
+                        android:ems="10"
+                        android:fontFamily="@font/roboto"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        tools:targetApi="o" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/player5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp5"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/bidp5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <EditText
+                        android:id="@+id/tricksp5"
+                        android:layout_width="75sp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="2sp"
+                        android:layout_marginBottom="2sp"
+                        android:background="@drawable/edit_text_selector"
+                        android:ems="10"
+                        android:fontFamily="@font/roboto"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        tools:targetApi="o" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/player6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/bidp6"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/bidp6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                    <EditText
+                        android:id="@+id/tricksp6"
+                        android:layout_width="75sp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="2sp"
+                        android:layout_marginBottom="2sp"
+                        android:background="@drawable/edit_text_selector"
+                        android:ems="10"
+                        android:fontFamily="@font/roboto"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        tools:targetApi="o"
+                        android:maxLength="2" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10sp">
+
+                    <TextView
+                        android:id="@+id/totalText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_span="2"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/bidp6"
+                        android:text="Total"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/trickTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="30sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/bidp6"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/nextRoundButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/button_style"
+                android:fontFamily="@font/lato_bold"
+                android:onClick="nextRoundButton"
+                android:paddingStart="8sp"
+                android:paddingTop="3sp"
+                android:paddingEnd="8sp"
+                android:paddingBottom="3sp"
+                android:text="Next round"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/backButton"
+                app:layout_constraintTop_toBottomOf="@+id/tricksTable" />
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/button_style"
+                android:fontFamily="@font/lato_bold"
+                android:onClick="editBids"
+                android:paddingStart="8sp"
+                android:paddingTop="3sp"
+                android:paddingEnd="8sp"
+                android:paddingBottom="3sp"
+                android:text="Edit bids"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/nextRoundButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tricksTable" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</android.support.constraint.ConstraintLayout>

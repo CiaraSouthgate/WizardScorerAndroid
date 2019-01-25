@@ -1,9 +1,6 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import static android.support.design.widget.Snackbar.LENGTH_LONG;
-import static android.support.design.widget.Snackbar.LENGTH_SHORT;
 
 public class PlayerSetup extends AppCompatActivity {
     Button startButton;
@@ -127,7 +122,7 @@ public class PlayerSetup extends AppCompatActivity {
             for (int i = 0; i < playerNames.length; i++) {
                 players[i] = new Player(playerNames[i]);
                 Game game = new Game(players);
-                Intent intent = new Intent(this, RoundSetup.class);
+                Intent intent = new Intent(this, Bids.class);
                 intent.putExtra("game", game);
                 startActivity(intent);
             }

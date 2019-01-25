@@ -8,6 +8,19 @@
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true">
 
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@android:color/transparent"
+        android:padding="5sp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/settings"
+        tools:visibility="visible"/>
+
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
@@ -21,7 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="15sp">
 
             <ImageView
                 android:id="@+id/logo"
@@ -75,6 +89,7 @@
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
+                        android:maxLength="12"
                         android:nextFocusLeft="@id/Player2"
                         android:nextFocusDown="@id/Player2"
                         android:nextFocusForward="@id/Player2"
@@ -100,6 +115,7 @@
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
+                        android:maxLength="12"
                         android:padding="3sp"
                         android:text=""
                         android:textAlignment="center"
@@ -123,6 +139,7 @@
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
+                        android:maxLength="12"
                         android:padding="3sp"
                         android:text=""
                         android:textAlignment="center"
@@ -146,12 +163,14 @@
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
+                        android:maxLength="12"
                         android:padding="3sp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="#000000"
                         android:textSize="24sp"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        tools:visibility="visible" />
                 </TableRow>
 
                 <TableRow
@@ -170,12 +189,14 @@
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
+                        android:maxLength="12"
                         android:padding="3sp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="#000000"
                         android:textSize="24sp"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        tools:visibility="visible" />
                 </TableRow>
 
                 <TableRow
@@ -194,6 +215,7 @@
                         android:fontFamily="@font/roboto"
                         android:importantForAutofill="no"
                         android:inputType="textCapWords|textPersonName"
+                        android:maxLength="12"
                         android:padding="3sp"
                         android:text=""
                         android:textAlignment="center"
@@ -201,7 +223,8 @@
                         android:textSize="24sp"
                         android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:visibility="visible" />
                 </TableRow>
 
             </TableLayout>
@@ -269,6 +292,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
         </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>

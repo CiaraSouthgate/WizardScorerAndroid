@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Final">
+
+    <TextView
+        android:id="@+id/finalScoresTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/final_scores"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/winnerIcon" />
+
+    <ImageView
+        android:id="@+id/winnerIcon"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/dealer_icon"
+        app:layout_constraintEnd_toStartOf="@+id/winnerName"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/trophy" />
+
+    <TextView
+        android:id="@+id/winner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/winner"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/winnerIcon"
+        app:layout_constraintEnd_toEndOf="@+id/winnerName"
+        app:layout_constraintStart_toStartOf="@+id/winnerName"
+        app:layout_constraintTop_toBottomOf="@+id/winnerName" />
+
+    <TextView
+        android:id="@+id/winnerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:maxWidth="250sp"
+        android:minWidth="60sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/winnerIcon"
+        app:layout_constraintTop_toTopOf="@id/winnerIcon"
+        tools:text="Player" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finalScoresTitle">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:id="@+id/scoresTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="64dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/finalScoreTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginStart="15sp"
+                        android:layout_marginEnd="5sp"
+                        android:fontFamily="@font/lato"
+                        android:text="@string/final_score"
+                        android:textAlignment="center" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/player1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/player2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp2"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/player3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp3"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/player4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp4"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/player5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp5"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/player6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/bidp6"
+                        android:maxWidth="150sp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="Player" />
+
+                    <TextView
+                        android:id="@+id/scorep6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/tricksp1"
+                        android:padding="3sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        tools:text="0" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/newGameButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/button_style"
+                android:fontFamily="@font/lato_bold"
+                android:onClick="newGame"
+                android:paddingStart="8sp"
+                android:paddingTop="3sp"
+                android:paddingEnd="8sp"
+                android:paddingBottom="3sp"
+                android:text="@string/new_game"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scoresTable" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
