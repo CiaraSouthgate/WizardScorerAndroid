@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/lato"
-                android:text="Enter Tricks"
+                android:text="@string/enter_tricks"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="42sp"
@@ -111,7 +111,7 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:layout_marginStart="10sp"
                         android:fontFamily="@font/lato"
-                        android:text="Score"
+                        android:text="@string/score"
                         android:textAlignment="center" />
 
                     <TextView
@@ -123,7 +123,7 @@
                         android:layout_marginStart="10sp"
                         android:fontFamily="@font/lato"
                         android:gravity="bottom"
-                        android:text="Bid"
+                        android:text="@string/bid"
                         android:textAlignment="center" />
 
                     <TextView
@@ -135,7 +135,7 @@
                         android:layout_marginStart="10sp"
                         android:fontFamily="@font/lato"
                         android:gravity="bottom"
-                        android:text="Took"
+                        android:text="@string/took"
                         android:textAlignment="center" />
 
                 </TableRow>
@@ -583,7 +583,7 @@
                         android:contentDescription="@string/player_bid"
                         android:fontFamily="@font/lato"
                         android:labelFor="@+id/bidp6"
-                        android:text="Total"
+                        android:text="@string/total"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="24sp"
@@ -599,11 +599,11 @@
                         android:contentDescription="@string/player_bid"
                         android:fontFamily="@font/lato"
                         android:labelFor="@+id/bidp6"
-                        android:text="0"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="0" />
                 </TableRow>
 
             </TableLayout>
@@ -623,7 +623,7 @@
                 android:paddingTop="3sp"
                 android:paddingEnd="8sp"
                 android:paddingBottom="3sp"
-                android:text="Next round"
+                android:text="@string/next_round"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -645,7 +645,7 @@
                 android:paddingTop="3sp"
                 android:paddingEnd="8sp"
                 android:paddingBottom="3sp"
-                android:text="Edit bids"
+                android:text="@string/edit_bids"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toStartOf="@+id/nextRoundButton"
@@ -656,8 +656,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/error"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -665,7 +664,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

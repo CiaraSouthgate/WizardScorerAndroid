@@ -110,7 +110,7 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:layout_marginStart="10sp"
                         android:fontFamily="@font/lato"
-                        android:text="Score"
+                        android:text="@string/score"
                         android:textAlignment="center" />
 
                     <TextView
@@ -122,7 +122,7 @@
                         android:layout_marginStart="10sp"
                         android:fontFamily="@font/lato"
                         android:gravity="bottom"
-                        android:text="Bid"
+                        android:text="@string/bid"
                         android:textAlignment="center" />
 
                 </TableRow>
@@ -480,7 +480,7 @@
                         android:contentDescription="@string/player_bid"
                         android:fontFamily="@font/lato"
                         android:labelFor="@+id/bidp6"
-                        android:text="Total"
+                        android:text="@string/total"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="24sp"
@@ -496,11 +496,11 @@
                         android:contentDescription="@string/player_bid"
                         android:fontFamily="@font/lato"
                         android:labelFor="@+id/bidp6"
-                        android:text="0"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="0" />
                 </TableRow>
 
             </TableLayout>
@@ -519,7 +519,7 @@
                 android:paddingTop="3sp"
                 android:paddingEnd="8sp"
                 android:paddingBottom="3sp"
-                android:text="Continue"
+                android:text="@string/continue_text"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"

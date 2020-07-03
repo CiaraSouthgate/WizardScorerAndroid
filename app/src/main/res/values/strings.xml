@@ -20,4 +20,12 @@
     <string name="winner">Winner</string>
     <string name="final_score">Final Score</string>
     <string name="new_game">New Game</string>
+    <string name="score">Score</string>
+    <string name="bid">Bid</string>
+    <string name="total">Total</string>
+    <string name="continue_text">Continue</string>
+    <string name="enter_tricks">Enter Tricks</string>
+    <string name="took">Took</string>
+    <string name="next_round">Next round</string>
+    <string name="edit_bids">Edit bids</string>
 </resources>
