@@ -12,8 +12,7 @@
         <activity
             android:name=".Final"
             android:screenOrientation="portrait" />
-        <activity android:name=".PlayerSetup"
-            android:configChanges="orientation|screenSize">
+        <activity android:name=".PlayerSetup">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +24,11 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".Bids"
+        <activity
+            android:name=".Bids"
             android:screenOrientation="portrait" />
-        <activity android:name=".Tricks"
+        <activity
+            android:name=".Tricks"
             android:screenOrientation="portrait" />
     </application>
 

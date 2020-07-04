@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/playerNameInput"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="2sp"
+    android:background="@drawable/edit_text_selector"
+    android:ems="10"
+    android:fontFamily="@font/roboto"
+    android:importantForAutofill="no"
+    android:inputType="textCapWords|textPersonName"
+    android:maxLength="12"
+    android:padding="3sp"
+    android:textAlignment="center"
+    android:textSize="24sp"
+    tools:ignore="LabelFor">
+
+</EditText>

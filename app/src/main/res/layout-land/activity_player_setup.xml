@@ -29,40 +29,102 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8sp"
+        android:baselineAligned="false"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         tools:context=".PlayerSetup">
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="150sp"
-            android:contentDescription="@string/wizard_logo"
-            app:srcCompat="@drawable/wizard_logo" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/playersTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:text="@string/players"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="#000000"
-            android:textSize="36sp" />
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="match_parent"
+                android:layout_height="150sp"
+                android:contentDescription="@string/wizard_logo"
+                app:srcCompat="@drawable/wizard_logo" />
+
+            <TextView
+                android:id="@+id/playersTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="@string/players"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="36sp" />
+
+            <LinearLayout
+                android:id="@+id/buttonLayout"
+                android:layout_width="250sp"
+                android:layout_height="65sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8sp"
+                android:weightSum="4">
+
+                <Button
+                    android:id="@+id/removePlayer"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_weight="1"
+                    android:onClick="removePlayer"
+                    app:icon="@drawable/remove"
+                    app:iconSize="28sp"
+                    tools:ignore="ButtonStyle" />
+
+                <Button
+                    android:id="@+id/startButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4sp"
+                    android:layout_marginEnd="4sp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/lato_bold"
+                    android:onClick="startButton"
+                    android:paddingStart="8sp"
+                    android:paddingLeft="8sp"
+                    android:paddingTop="8sp"
+                    android:paddingEnd="8sp"
+                    android:paddingRight="8sp"
+                    android:paddingBottom="8sp"
+                    android:text="@string/start"
+                    android:textColor="#FFFFFF"
+                    android:textSize="28sp"
+                    tools:ignore="ButtonStyle" />
+
+                <Button
+                    android:id="@+id/addPlayer"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:onClick="addPlayer"
+                    app:icon="@drawable/add"
+                    app:iconSize="28sp"
+                    tools:ignore="ButtonStyle" />
+
+            </LinearLayout>
+        </LinearLayout>
 
         <TableLayout
             android:id="@+id/playerTable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="8sp"
-            android:layout_gravity="center"
+            android:layout_weight="1"
             android:gravity="center">
 
             <TableRow
@@ -131,61 +193,8 @@
                     layout="@layout/player_input" />
             </TableRow>
 
-
         </TableLayout>
 
-        <LinearLayout
-            android:id="@+id/buttonLayout"
-            android:layout_width="250sp"
-            android:layout_height="65sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="8sp"
-            android:weightSum="4">
-
-            <Button
-                android:id="@+id/removePlayer"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="start|center_vertical"
-                android:layout_weight="1"
-                android:onClick="removePlayer"
-                app:icon="@drawable/remove"
-                app:iconSize="28sp"
-                tools:ignore="ButtonStyle" />
-
-            <Button
-                android:id="@+id/startButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginStart="4sp"
-                android:layout_marginEnd="4sp"
-                android:layout_weight="2"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="startButton"
-                android:paddingStart="8sp"
-                android:paddingLeft="8sp"
-                android:paddingTop="8sp"
-                android:paddingEnd="8sp"
-                android:paddingRight="8sp"
-                android:paddingBottom="8sp"
-                android:text="@string/start"
-                android:textColor="#FFFFFF"
-                android:textSize="28sp"
-                tools:ignore="ButtonStyle" />
-
-            <Button
-                android:id="@+id/addPlayer"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical|end"
-                android:onClick="addPlayer"
-                app:icon="@drawable/add"
-                app:iconSize="28sp"
-                tools:ignore="ButtonStyle" />
-
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

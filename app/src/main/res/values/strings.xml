@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Wizard Scorekeeper</string>
     <string name="logo">logo</string>
-    <string name="players">Players</string>
+    <string name="players">Player Setup</string>
     <string name="start">Start</string>
     <string name="playerNameError">All players must have names</string>
     <string name="minus">-</string>
@@ -32,4 +32,33 @@
     <string name="load_saved_game">Load Saved Game</string>
     <string name="game_settings">Game Settings</string>
     <string name="contact_developer">Contact Developer</string>
+    <string name="email_subject">Wizard Scorekeeper Feedback</string>
+    <string name="email_content">
+        -------------------------\n
+        Please enter your message above this line.\n\n
+        If you are experiencing a bug, please leave the text below in place.
+        It contains information about your device that will help me to investigate the issue.
+        Otherwise, feel free to delete it if you don\'t want to share it.
+    </string>
+    <string name="alternate_rules">Alternate Rules</string>
+    <string name="standard">Standard</string>
+    <string name="standard_info">
+        The standard rule set for Wizard, as described in the official rules.
+    </string>
+    <string name="canadian_rule">Canadian Rule</string>
+    <string name="canadian_rule_info">
+        If the last person to bid also has the highest score on the score sheet (not tied),
+        they cannot bid a number that would cause the total number of tricks bid to equal the total
+        number of tricks in the round.
+    </string>
+    <string name="no_even_bids">No Even Bids</string>
+    <string name="no_even_bids_info">
+        The last person to bid cannot bid a number that would cause the total number of tricks bid
+        to equal the total number of tricks in the round.
+    </string>
+    <string name="one_to_x">One to X to One</string>
+    <string name="one_to_x_info">
+        Rather than increasing the number of tricks in a round until the final round, the number of
+        tricks only increases to a specified number, then decreases back to one.
+    </string>
 </resources>
