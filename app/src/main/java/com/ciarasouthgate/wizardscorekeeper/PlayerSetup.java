@@ -31,22 +31,24 @@ public class PlayerSetup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_setup);
 
-        Player1 = findViewById(R.id.player1);
-        Player2 = findViewById(R.id.player2);
-        Player3 = findViewById(R.id.player3);
-        Player4 = findViewById(R.id.player4);
-        Player5 = findViewById(R.id.player5);
-        Player6 = findViewById(R.id.player6);
+        Player1 = findViewById(R.id.player1name);
+        Player2 = findViewById(R.id.player2name);
+        Player3 = findViewById(R.id.player3name);
+        Player4 = findViewById(R.id.player4name);
+        Player5 = findViewById(R.id.player5name);
+        Player6 = findViewById(R.id.player6name);
 
         startButton = findViewById(R.id.startButton);
-        appBar = findViewById(R.id.topAppBar);
+        appBar = findViewById(R.id.setupAppBar);
         appBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.loadSaved:
+                        //TODO
                         break;
-                    case R.id.gameSettings:
+                    case R.id.alternateRules:
+                        startActivity(new Intent(getApplicationContext(), AlternateRules.class));
                         break;
                     case R.id.contact:
                         sendEmail();
@@ -72,12 +74,12 @@ public class PlayerSetup extends AppCompatActivity {
                 + "\nDISPLAY : " + Build.DISPLAY
                 + "\nTIME : " + Build.TIME;
 
-        String message = "\n\n" + getString(R.string.email_content) + "\n\n" + details;
+        String message = "\n\n" + getString(R.string.feedback_email_content) + "\n\n" + details;
 
         Intent email = new Intent(Intent.ACTION_SENDTO);
         email.setData(Uri.parse("mailto:"));
         email.putExtra(Intent.EXTRA_EMAIL, new String[]{"ciarasouthgate.dev@gmail.com"});
-        email.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
+        email.putExtra(Intent.EXTRA_SUBJECT, "Wizard Scorekeeper Feedback");
         email.putExtra(Intent.EXTRA_TEXT, message);
         if (email.resolveActivity(getPackageManager()) != null) {
             startActivity(email);

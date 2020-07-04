@@ -32,8 +32,7 @@
     <string name="load_saved_game">Load Saved Game</string>
     <string name="game_settings">Game Settings</string>
     <string name="contact_developer">Contact Developer</string>
-    <string name="email_subject">Wizard Scorekeeper Feedback</string>
-    <string name="email_content">
+    <string name="feedback_email_content">
         -------------------------\n
         Please enter your message above this line.\n\n
         If you are experiencing a bug, please leave the text below in place.
@@ -61,4 +60,12 @@
         Rather than increasing the number of tricks in a round until the final round, the number of
         tricks only increases to a specified number, then decreases back to one.
     </string>
+    <string name="max_tricks">Maximum number of tricks: </string>
+    <string name="add_rule">
+        Would you like to see your favourite house rule added? Let me know how it works and I\'ll do my best!
+    </string>
+    <string name="prefs_err">
+        Unable to save setting. Please try again.
+    </string>
+    <string name="back">Back</string>
 </resources>

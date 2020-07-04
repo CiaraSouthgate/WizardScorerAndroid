@@ -6,8 +6,8 @@
         android:enabled="false"
         android:title="@string/load_saved_game" />
     <item
-        android:id="@+id/gameSettings"
-        android:title="@string/game_settings" />
+        android:id="@+id/alternateRules"
+        android:title="@string/alternate_rules" />
     <item
         android:id="@+id/contact"
         android:title="@string/contact_developer" />

@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
+            android:id="@+id/setupAppBar"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -58,7 +58,7 @@
             android:textSize="36sp" />
 
         <TableLayout
-            android:id="@+id/playerTable"
+            android:id="@+id/playerTnameable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8sp"
@@ -72,7 +72,7 @@
                 android:layout_marginBottom="3sp">
 
                 <include
-                    android:id="@+id/player1"
+                    android:id="@+id/player1name"
                     layout="@layout/player_input" />
             </TableRow>
 
@@ -83,7 +83,7 @@
                 android:layout_marginBottom="3sp">
 
                 <include
-                    android:id="@+id/player2"
+                    android:id="@+id/player2name"
                     layout="@layout/player_input" />
             </TableRow>
 
@@ -94,7 +94,7 @@
                 android:layout_marginBottom="3sp">
 
                 <include
-                    android:id="@+id/player3"
+                    android:id="@+id/player3name"
                     layout="@layout/player_input" />
             </TableRow>
 
@@ -105,7 +105,7 @@
                 android:layout_marginBottom="3sp">
 
                 <include
-                    android:id="@+id/player4"
+                    android:id="@+id/player4name"
                     layout="@layout/player_input" />
             </TableRow>
 
@@ -116,7 +116,7 @@
                 android:layout_marginBottom="3sp">
 
                 <include
-                    android:id="@+id/player5"
+                    android:id="@+id/player5name"
                     layout="@layout/player_input" />
             </TableRow>
 
@@ -127,7 +127,7 @@
                 android:layout_marginBottom="3sp">
 
                 <include
-                    android:id="@+id/player6"
+                    android:id="@+id/player6name"
                     layout="@layout/player_input" />
             </TableRow>
 
