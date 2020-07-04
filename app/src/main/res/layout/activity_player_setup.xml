@@ -1,300 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PlayerSetup"
-    android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true">
+    android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/settingsButton"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:background="@android:color/transparent"
-        android:padding="5sp"
-        android:scaleType="fitCenter"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settings"
-        tools:visibility="visible"/>
-
-    <ScrollView
-        android:id="@+id/scroll"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/game_setup"
+            app:title="@string/app_name" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8sp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        tools:context=".PlayerSetup">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:contentDescription="@string/wizard_logo"
+            app:srcCompat="@drawable/wizard_logo" />
+
+        <TextView
+            android:id="@+id/playersTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingBottom="15sp">
+            android:fontFamily="@font/lato"
+            android:text="@string/players"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="36sp" />
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="150sp"
-                android:layout_marginStart="8sp"
-                android:layout_marginEnd="8sp"
-                android:contentDescription="@string/logo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/wizardlogo" />
+        <TableLayout
+            android:id="@+id/playerTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:gravity="center">
 
-            <TextView
-                android:id="@+id/PlayersTitle"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato"
-                android:text="@string/players"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:textSize="36sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
+                android:layout_marginBottom="3sp"
+                android:gravity="center">
 
-            <TableLayout
-                android:id="@+id/playerTable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/PlayersTitle">
-
-                <TableRow
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/Player1"
+                    android:layout_width="250sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:gravity="center">
-
-                    <EditText
-                        android:id="@+id/Player1"
-                        android:layout_width="250sp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_selector"
-                        android:ems="10"
-                        android:fontFamily="@font/roboto"
-                        android:importantForAutofill="no"
-                        android:inputType="textCapWords|textPersonName"
-                        android:maxLength="12"
-                        android:nextFocusLeft="@id/Player2"
-                        android:nextFocusDown="@id/Player2"
-                        android:nextFocusForward="@id/Player2"
-                        android:padding="3sp"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textSize="24sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
-
-                    <EditText
-                        android:id="@+id/Player2"
-                        android:layout_width="250sp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_selector"
-                        android:ems="10"
-                        android:fontFamily="@font/roboto"
-                        android:importantForAutofill="no"
-                        android:inputType="textCapWords|textPersonName"
-                        android:maxLength="12"
-                        android:padding="3sp"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textSize="24sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
-
-                    <EditText
-                        android:id="@+id/Player3"
-                        android:layout_width="250sp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_selector"
-                        android:ems="10"
-                        android:fontFamily="@font/roboto"
-                        android:importantForAutofill="no"
-                        android:inputType="textCapWords|textPersonName"
-                        android:maxLength="12"
-                        android:padding="3sp"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textSize="24sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
-
-                    <EditText
-                        android:id="@+id/Player4"
-                        android:layout_width="250sp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_selector"
-                        android:ems="10"
-                        android:fontFamily="@font/roboto"
-                        android:importantForAutofill="no"
-                        android:inputType="textCapWords|textPersonName"
-                        android:maxLength="12"
-                        android:padding="3sp"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textSize="24sp"
-                        android:visibility="gone"
-                        tools:visibility="visible" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
-
-                    <EditText
-                        android:id="@+id/Player5"
-                        android:layout_width="250sp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_selector"
-                        android:ems="10"
-                        android:fontFamily="@font/roboto"
-                        android:importantForAutofill="no"
-                        android:inputType="textCapWords|textPersonName"
-                        android:maxLength="12"
-                        android:padding="3sp"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textSize="24sp"
-                        android:visibility="gone"
-                        tools:visibility="visible" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp">
-
-                    <EditText
-                        android:id="@+id/Player6"
-                        android:layout_width="250sp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="2sp"
-                        android:background="@drawable/edit_text_selector"
-                        android:ems="10"
-                        android:fontFamily="@font/roboto"
-                        android:importantForAutofill="no"
-                        android:inputType="textCapWords|textPersonName"
-                        android:maxLength="12"
-                        android:padding="3sp"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textSize="24sp"
-                        android:visibility="gone"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:visibility="visible" />
-                </TableRow>
-
-            </TableLayout>
-
-            <FrameLayout
-                android:id="@+id/frameLayout"
-                android:layout_width="250sp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8sp"
-                android:layout_marginTop="8sp"
-                android:layout_marginEnd="8sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/playerTable">
-
-                <Button
-                    android:id="@+id/startButton"
-                    android:layout_width="115sp"
-                    android:layout_height="55sp"
                     android:layout_gravity="center"
-                    android:background="@drawable/button_style"
-                    android:fontFamily="@font/lato_bold"
-                    android:onClick="startButton"
-                    android:paddingBottom="3sp"
-                    android:text="@string/start"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30sp" />
+                    android:layout_margin="2sp"
+                    android:background="@drawable/edit_text_selector"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="12"
+                    android:nextFocusLeft="@id/Player2"
+                    android:nextFocusDown="@id/Player2"
+                    android:nextFocusForward="@id/Player2"
+                    android:padding="3sp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
+            </TableRow>
 
-                <ImageButton
-                    android:id="@+id/removePlayer"
-                    android:layout_width="55sp"
-                    android:layout_height="55sp"
-                    android:layout_gravity="start|center_vertical"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/button_style"
-                    android:onClick="removePlayer"
-                    android:padding="12sp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/remove" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3sp"
+                android:gravity="center">
 
-                <ImageButton
-                    android:id="@+id/addPlayer"
-                    android:layout_width="55sp"
-                    android:layout_height="55sp"
-                    android:layout_gravity="end|center_vertical"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/button_style"
-                    android:onClick="addPlayer"
-                    android:padding="12sp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/add" />
+                <EditText
+                    android:id="@+id/Player2"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2sp"
+                    android:background="@drawable/edit_text_selector"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="12"
+                    android:padding="3sp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+            </TableRow>
 
-            </FrameLayout>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3sp"
+                android:gravity="center">
 
-        </LinearLayout>
-    </ScrollView>
+                <EditText
+                    android:id="@+id/Player3"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2sp"
+                    android:background="@drawable/edit_text_selector"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="12"
+                    android:padding="3sp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+            </TableRow>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/error"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3sp"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/Player4"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2sp"
+                    android:background="@drawable/edit_text_selector"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="12"
+                    android:padding="3sp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3sp"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/Player5"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2sp"
+                    android:background="@drawable/edit_text_selector"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="12"
+                    android:padding="3sp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3sp"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/Player6"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2sp"
+                    android:background="@drawable/edit_text_selector"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="12"
+                    android:padding="3sp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:visibility="visible" />
+            </TableRow>
+
+        </TableLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:id="@+id/frameLayout"
+            android:layout_width="250sp"
+            android:layout_height="65sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8sp"
+            android:weightSum="4">
+
+            <Button
+                android:id="@+id/removePlayer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:layout_weight="1"
+                android:onClick="removePlayer"
+                app:icon="@drawable/remove"
+                app:iconSize="28sp" />
+
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="4sp"
+                android:layout_marginEnd="4sp"
+                android:layout_weight="2"
+                android:fontFamily="@font/lato_bold"
+                android:onClick="startButton"
+                android:paddingStart="8sp"
+                android:paddingLeft="8sp"
+                android:paddingTop="8sp"
+                android:paddingEnd="8sp"
+                android:paddingRight="8sp"
+                android:paddingBottom="8sp"
+                android:text="@string/start"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <Button
+                android:id="@+id/addPlayer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:onClick="addPlayer"
+                app:icon="@drawable/add"
+                app:iconSize="28sp" />
 
         </LinearLayout>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

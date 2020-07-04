@@ -5,13 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
-import static com.google.android.material.snackbar.Snackbar.LENGTH_LONG;
 
 public class PlayerSetup extends AppCompatActivity {
     Button startButton;
@@ -22,8 +18,6 @@ public class PlayerSetup extends AppCompatActivity {
     EditText Player4;
     EditText Player5;
     EditText Player6;
-
-    CoordinatorLayout snackbar;
 
     int playerCount;
 
@@ -40,8 +34,6 @@ public class PlayerSetup extends AppCompatActivity {
         Player6 = findViewById(R.id.Player6);
 
         startButton = findViewById(R.id.startButton);
-
-        snackbar = findViewById(R.id.error);
 
         playerCount = 3;
     }
@@ -61,7 +53,7 @@ public class PlayerSetup extends AppCompatActivity {
                 playerCount++;
                 break;
             case 6:
-                Snackbar.make(snackbar, R.string.max_players, LENGTH_LONG).show();
+                Toast.makeText(this, R.string.max_players, Toast.LENGTH_LONG).show();
                 break;
             default:
                 break;
@@ -71,7 +63,7 @@ public class PlayerSetup extends AppCompatActivity {
     public void removePlayer(View v) {
         switch (playerCount) {
             case 3:
-                Snackbar.make(snackbar, R.string.min_players, LENGTH_LONG).show();
+                Toast.makeText(this, R.string.min_players, Toast.LENGTH_LONG).show();
                 break;
             case 4:
                 Player4.setVisibility(View.GONE);
@@ -115,7 +107,7 @@ public class PlayerSetup extends AppCompatActivity {
         for (String s : playerNames) {
             if (s.equals("")) {
                 empty = true;
-                Snackbar.make(snackbar, R.string.playerNameError, LENGTH_LONG).show();
+                Toast.makeText(this, R.string.playerNameError, Toast.LENGTH_LONG).show();
                 break;
             }
         }
