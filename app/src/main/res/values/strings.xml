@@ -60,12 +60,14 @@
         Rather than increasing the number of tricks in a round until the final round, the number of
         tricks only increases to a specified number, then decreases back to one.
     </string>
-    <string name="max_tricks">Maximum number of tricks: </string>
+    <string name="max_tricks">Select maximum number of tricks: </string>
     <string name="add_rule">
         Would you like to see your favourite house rule added? Let me know how it works and I\'ll do my best!
     </string>
     <string name="prefs_err">
         Unable to save setting. Please try again.
     </string>
+    <string name="change_mode">Change mode</string>
+    <string name="cancel">Cancel</string>
     <string name="back">Back</string>
 </resources>

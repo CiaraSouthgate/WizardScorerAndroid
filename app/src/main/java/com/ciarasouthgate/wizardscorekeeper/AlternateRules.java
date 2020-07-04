@@ -15,18 +15,20 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class AlternateRules extends AppCompatActivity {
-    private static final String RULES_PREF = "RULES_PREF";
-    private static final String CDN_RULE = "CDN_RULE";
-    private static final String NO_EVEN = "NO_EVEN";
-    private static final String ONE_TO_X = "ONE_TO_X";
+import static com.ciarasouthgate.wizardscorekeeper.Constants.CDN_RULE;
+import static com.ciarasouthgate.wizardscorekeeper.Constants.NO_EVEN;
+import static com.ciarasouthgate.wizardscorekeeper.Constants.ONE_TO_X;
+import static com.ciarasouthgate.wizardscorekeeper.Constants.RULES_PREF;
 
+public class AlternateRules extends AppCompatActivity {
     Toolbar appBar;
 
     SwitchMaterial cdnRuleSwitch;
     SwitchMaterial noEvenSwitch;
     SwitchMaterial oneToXSwitch;
+
     SharedPreferences prefs;
+
     private boolean cdnRuleActive;
     private boolean noEvenActive;
     private boolean oneToXActive;

@@ -1,20 +1,27 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import static com.ciarasouthgate.wizardscorekeeper.Constants.ONE_TO_X;
+import static com.ciarasouthgate.wizardscorekeeper.Constants.RULES_PREF;
+import static com.ciarasouthgate.wizardscorekeeper.Constants.getRoundCounts;
+
 public class PlayerSetup extends AppCompatActivity {
-    Button startButton;
     Toolbar appBar;
 
     EditText Player1;
@@ -26,10 +33,14 @@ public class PlayerSetup extends AppCompatActivity {
 
     int playerCount;
 
+    private SharedPreferences prefs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_setup);
+
+        prefs = getSharedPreferences(RULES_PREF, Context.MODE_PRIVATE);
 
         Player1 = findViewById(R.id.player1name);
         Player2 = findViewById(R.id.player2name);
@@ -38,7 +49,6 @@ public class PlayerSetup extends AppCompatActivity {
         Player5 = findViewById(R.id.player5name);
         Player6 = findViewById(R.id.player6name);
 
-        startButton = findViewById(R.id.startButton);
         appBar = findViewById(R.id.setupAppBar);
         appBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -133,10 +143,38 @@ public class PlayerSetup extends AppCompatActivity {
         }
     }
 
+    public int getMaxTricks() {
+        final int[] maxTricks = {0};
+        final NumberPicker picker = new NumberPicker(this);
+        picker.setMinValue(2);
+        picker.setMaxValue(getRoundCounts(playerCount));
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.one_to_x))
+                .setMessage(getString(R.string.max_tricks))
+                .setView(picker)
+                .setNegativeButton(getString(R.string.cancel), null)
+                .setNeutralButton(getString(R.string.change_mode), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(getApplicationContext(), AlternateRules.class));
+                    }
+                })
+                .setPositiveButton(getString(R.string.start), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        maxTricks[0] = picker.getValue();
+                    }
+                })
+                .show();
+        return maxTricks[0];
+    }
+
     public void startButton(View v) {
+        int maxTricks = getRoundCounts(playerCount);
+
         Player[] players = new Player[playerCount];
         String[] playerNames = new String[playerCount];
-        boolean empty = false;
 
         switch (playerCount) {
             case 6:
@@ -153,22 +191,22 @@ public class PlayerSetup extends AppCompatActivity {
         }
 
         for (String s : playerNames) {
-            if (s.equals("")) {
-                empty = true;
+            if (s.isEmpty()) {
                 Toast.makeText(this, R.string.playerNameError, Toast.LENGTH_LONG).show();
-                break;
+                return;
             }
         }
 
-        if (!empty) {
-            for (int i = 0; i < playerNames.length; i++) {
-                players[i] = new Player(playerNames[i]);
-                Game game = new Game(players);
-                Intent intent = new Intent(this, Bids.class);
-                intent.putExtra("game", game);
-                startActivity(intent);
-            }
-        }
+        if (prefs.getBoolean(ONE_TO_X, false))
+            maxTricks = getMaxTricks(); //TODO pass to game
+
+//            for (int i = 0; i < playerNames.length; i++) {
+//                players[i] = new Player(playerNames[i]);
+//                Game game = new Game(players);
+//                Intent intent = new Intent(this, Bids.class);
+//                intent.putExtra("game", game);
+//                startActivity(intent);
+//            }
     }
 }
 
