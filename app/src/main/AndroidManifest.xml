@@ -9,12 +9,8 @@
         android:roundIcon="@drawable/wizard_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ContactDev"
-            android:theme="@style/noAnimation" />
-        <activity
-            android:name=".AlternateRules"
-            android:theme="@style/noAnimation" />
+        <activity android:name=".ContactDev" />
+        <activity android:name=".AlternateRules" />
         <activity
             android:name=".Final"
             android:screenOrientation="portrait" />

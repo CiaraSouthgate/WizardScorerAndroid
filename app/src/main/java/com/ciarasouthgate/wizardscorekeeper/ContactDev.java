@@ -24,8 +24,10 @@ public class ContactDev extends AppCompatActivity {
         appBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == (R.id.backButton))
+                if (item.getItemId() == (R.id.backButton)) {
                     finish();
+                    overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+                }
                 return true;
             }
         });
