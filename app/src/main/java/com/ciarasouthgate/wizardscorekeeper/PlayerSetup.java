@@ -57,9 +57,11 @@ public class PlayerSetup extends AppCompatActivity {
                         break;
                     case R.id.alternateRules:
                         startActivity(new Intent(getApplicationContext(), AlternateRules.class));
+                        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                         break;
                     case R.id.contact:
                         startActivity(new Intent(getApplicationContext(), ContactDev.class));
+                        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                         break;
                 }
                 return true;

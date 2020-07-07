@@ -25,99 +25,105 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/contactContent"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="12sp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/contactTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12sp"
-            android:layout_marginEnd="12sp"
-            android:fontFamily="@font/lato"
-            android:text="@string/contact_developer"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/contactText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12sp"
-            android:layout_marginTop="8sp"
-            android:layout_marginEnd="12sp"
-            android:fontFamily="@font/lato"
-            android:text="@string/contact_text"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
-
-        <Switch
-            android:id="@+id/deviceInfoSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16sp"
-            android:layout_marginTop="8sp"
-            android:layout_marginEnd="16sp"
-            android:checked="true"
-            android:fontFamily="@font/lato"
-            android:text="@string/include_info"
-            android:textColor="@color/material_on_surface_emphasis_medium" />
-
-        <Button
-            android:id="@+id/contactButton"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <LinearLayout
+            android:id="@+id/contactContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12sp"
-            android:layout_marginEnd="12sp"
-            android:onClick="sendEmail"
-            android:text="@string/contact" />
+            android:orientation="vertical"
+            android:paddingTop="12sp">
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="12sp"
-            android:layout_marginBottom="12sp"
-            android:background="?android:attr/listDivider" />
+            <TextView
+                android:id="@+id/contactTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:layout_marginEnd="12sp"
+                android:fontFamily="@font/lato"
+                android:text="@string/contact_developer"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/supportTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12sp"
-            android:layout_marginEnd="12sp"
-            android:fontFamily="@font/lato"
-            android:text="@string/support_dev"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/contactText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="12sp"
+                android:fontFamily="@font/lato"
+                android:text="@string/contact_text"
+                android:textColor="@android:color/tertiary_text_dark"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/supportText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12sp"
-            android:layout_marginTop="8sp"
-            android:layout_marginEnd="12sp"
-            android:fontFamily="@font/lato"
-            android:text="@string/support_dialog_text"
-            android:textColor="@android:color/black" />
+            <Switch
+                android:id="@+id/deviceInfoSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="12sp"
+                android:checked="true"
+                android:fontFamily="@font/lato"
+                android:switchMinWidth="56sp"
+                android:text="@string/include_info"
+                android:textColor="@android:color/tertiary_text_dark" />
 
-        <Button
-            android:id="@+id/supportButton"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12sp"
-            android:layout_marginEnd="12sp"
-            android:onClick="openKoFi"
-            android:text="@string/coffee" />
+            <Button
+                android:id="@+id/contactButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:layout_marginEnd="12sp"
+                android:onClick="sendEmail"
+                android:text="@string/contact" />
 
-    </LinearLayout>
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12sp"
+                android:layout_marginBottom="12sp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/supportTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:layout_marginEnd="12sp"
+                android:fontFamily="@font/lato"
+                android:text="@string/support_dev"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/supportText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="12sp"
+                android:fontFamily="@font/lato"
+                android:text="@string/support_dialog_text"
+                android:textColor="@android:color/tertiary_text_dark"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/supportButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:layout_marginEnd="12sp"
+                android:onClick="openKoFi"
+                android:text="@string/coffee" />
+
+        </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>
