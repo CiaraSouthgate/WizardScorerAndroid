@@ -14,8 +14,4 @@
         android:id="@+id/contact"
         android:icon="@drawable/ic_baseline_email_24"
         android:title="@string/contact_developer" />
-    <item
-        android:id="@+id/support"
-        android:icon="@drawable/ic_baseline_heart_24"
-        android:title="@string/support" />
 </menu>

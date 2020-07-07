@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ContactDev"
+            android:theme="@style/noAnimation" />
+        <activity
             android:name=".AlternateRules"
             android:theme="@style/noAnimation" />
         <activity

@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -61,39 +59,13 @@ public class PlayerSetup extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), AlternateRules.class));
                         break;
                     case R.id.contact:
-                        sendEmail();
+                        startActivity(new Intent(getApplicationContext(), ContactDev.class));
                         break;
                 }
                 return true;
             }
         });
         playerCount = 3;
-    }
-
-    private void sendEmail() {
-        String details = "\nVERSION.RELEASE : " + Build.VERSION.RELEASE
-                + "\nVERSION.INCREMENTAL : " + Build.VERSION.INCREMENTAL
-                + "\nVERSION.SDK.NUMBER : " + Build.VERSION.SDK_INT
-                + "\nBRAND : " + Build.BRAND
-                + "\nHARDWARE : " + Build.HARDWARE
-                + "\nHOST : " + Build.HOST
-                + "\nID : " + Build.ID
-                + "\nMANUFACTURER : " + Build.MANUFACTURER
-                + "\nMODEL : " + Build.MODEL
-                + "\nPRODUCT : " + Build.PRODUCT
-                + "\nDISPLAY : " + Build.DISPLAY
-                + "\nTIME : " + Build.TIME;
-
-        String message = "\n\n" + getString(R.string.feedback_email_content) + "\n\n" + details;
-
-        Intent email = new Intent(Intent.ACTION_SENDTO);
-        email.setData(Uri.parse("mailto:"));
-        email.putExtra(Intent.EXTRA_EMAIL, new String[]{"ciarasouthgate.dev@gmail.com"});
-        email.putExtra(Intent.EXTRA_SUBJECT, "Wizard Scorekeeper Feedback");
-        email.putExtra(Intent.EXTRA_TEXT, message);
-        if (email.resolveActivity(getPackageManager()) != null) {
-            startActivity(email);
-        }
     }
 
     public void addPlayer(View v) {
