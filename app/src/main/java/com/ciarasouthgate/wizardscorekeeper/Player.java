@@ -1,25 +1,17 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Player implements Comparable<Player>, Parcelable {
+public class Player implements Comparable<Player> {
     private final String name;
     private int score;
-    private int bid;
-    private int tricks;
+    private final List<Round> rounds;
 
-    public Player(String setName) {
-        name = setName;
+    public Player(String name) {
+        this.name = name;
         score = 0;
-    }
-
-    public void setBid(int bid) {
-        this.bid = bid;
-    }
-
-    public void setTricks(int tricks) {
-        this.tricks = tricks;
+        rounds = new ArrayList<>();
     }
 
     public String getName() {
@@ -30,70 +22,34 @@ public class Player implements Comparable<Player>, Parcelable {
         return score;
     }
 
-    public int getBid() {
-        return bid;
+    public List<Round> getRounds() {
+        return rounds;
     }
 
-    public int getTricks() {
-        return tricks;
+    public void startNewRound(int bid) {
+        rounds.add(new Round(bid));
     }
 
-    public void updateScore() {
-        int diff = Math.abs(tricks - bid);
-        changeScore((diff == 0) ? (bid * 10 + 20) : (-(diff * 10)));
-        bid = 0;
-        tricks = 0;
+    public int getBid(int roundNo) {
+        return rounds.get(roundNo - 1).getBid();
     }
 
-    public void changeScore(int n) {
-        score += n;
+    public int getLatestBid() {
+        return rounds.get(rounds.size() - 1).getBid();
+    }
+
+    public void endRound(int taken) {
+        Round activeRound = rounds.get(rounds.size() - 1);
+        activeRound.setTaken(taken);
+        score += activeRound.getScoreDiff();
+    }
+
+    public void editRound(Round round, int roundNo) {
+        rounds.set(roundNo - 1, round);
+        score = rounds.stream().mapToInt(Round::getScoreDiff).sum();
     }
 
     public int compareTo(Player other) {
-        if (score > other.getScore()) {
-            return -1;
-        } else if (score < other.getScore()) {
-            return 1;
-        }
-        return 0;
+        return Integer.compare(other.getScore(), score);
     }
-
-    public String toString() {
-        return name + ": " + score;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeInt(score);
-        dest.writeInt(bid);
-        dest.writeInt(tricks);
-    }
-
-    private Player(Parcel in) {
-        name = in.readString();
-        score = in.readInt();
-        bid = in.readInt();
-        tricks = in.readInt();
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Parcelable.Creator<Player> CREATOR
-            = new Parcelable.Creator<Player>() {
-
-        @Override
-        public Player createFromParcel(Parcel in) {
-            return new Player(in);
-        }
-
-        // We just need to copy this and change the type to match our class.
-        @Override
-        public Player[] newArray(int size) {
-            return new Player[size];
-        }
-    };
 }

@@ -26,8 +26,9 @@
 
     <ScrollView
         android:id="@+id/bidsScrollView"
-        android:layout_width="0dp"
-        android:layout_height="0sp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,94 +37,134 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8sp"
-            android:layout_marginTop="8sp"
-            android:layout_marginEnd="8sp"
-            android:orientation="vertical">
+            android:layout_marginEnd="32sp"
+            android:baselineAligned="false"
+            android:paddingBottom="8sp"
+            android:weightSum="2">
 
-            <TextView
-                android:id="@+id/roundTitle"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
-                android:fontFamily="@font/lato"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Round 1 of 10" />
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4sp"
-                android:fontFamily="@font/lato"
-                android:text="@string/enter_bids"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="42sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/roundTitle" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/dealerIcon"
-                    android:layout_width="60sp"
-                    android:layout_height="60sp"
+                <TextView
+                    android:id="@+id/roundTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8sp"
-                    android:layout_marginEnd="8sp"
-                    android:contentDescription="@string/dealer_icon"
-                    app:layout_constraintEnd_toStartOf="@+id/dealerName"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/card" />
-
-                <TextView
-                    android:id="@+id/dealer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8sp"
                     android:fontFamily="@font/lato"
-                    android:text="@string/dealer"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/dealerIcon"
-                    app:layout_constraintEnd_toEndOf="@+id/dealerName"
-                    app:layout_constraintStart_toStartOf="@+id/dealerName"
-                    app:layout_constraintTop_toBottomOf="@+id/dealerName" />
-
-                <TextView
-                    android:id="@+id/dealerName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato"
-                    android:maxWidth="250sp"
-                    android:minWidth="60sp"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/dealerIcon"
-                    app:layout_constraintTop_toTopOf="@id/dealerIcon"
-                    tools:text="Player" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Round 1 of 10" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4sp"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/enter_bids"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="42sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/roundTitle" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/dealerIcon"
+                        android:layout_width="60sp"
+                        android:layout_height="60sp"
+                        android:layout_marginTop="8sp"
+                        android:layout_marginEnd="8sp"
+                        android:contentDescription="@string/dealer_icon"
+                        app:layout_constraintEnd_toStartOf="@+id/dealerName"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/card" />
+
+                    <TextView
+                        android:id="@+id/dealer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8sp"
+                        android:fontFamily="@font/lato"
+                        android:text="@string/dealer"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/dealerIcon"
+                        app:layout_constraintEnd_toEndOf="@+id/dealerName"
+                        app:layout_constraintStart_toStartOf="@+id/dealerName"
+                        app:layout_constraintTop_toBottomOf="@+id/dealerName" />
+
+                    <TextView
+                        android:id="@+id/dealerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato"
+                        android:maxWidth="250sp"
+                        android:minWidth="60sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/dealerIcon"
+                        app:layout_constraintTop_toTopOf="@id/dealerIcon"
+                        tools:text="Player" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:orientation="vertical"
+                    android:paddingStart="24sp"
+                    android:paddingEnd="24sp"
+                    android:weightSum="2">
+
+
+                    <Button
+                        android:id="@+id/continueButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginEnd="8sp"
+                        android:layout_weight="1"
+                        android:onClick="continueButton"
+                        android:paddingStart="8sp"
+                        android:paddingLeft="8sp"
+                        android:paddingTop="8sp"
+                        android:paddingEnd="8sp"
+                        android:paddingRight="8sp"
+                        android:paddingBottom="8sp"
+                        android:text="@string/continue_text"
+                        android:textSize="20sp"
+                        tools:ignore="ButtonStyle,InefficientWeight" />
+                </LinearLayout>
+            </LinearLayout>
 
             <TableLayout
                 android:id="@+id/bidsTable"
-                android:layout_width="wrap_content"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8sp"
-                android:layout_marginBottom="8sp"
+                android:layout_weight="1"
+                android:paddingBottom="8sp"
                 android:weightSum="1">
 
                 <TableRow
@@ -156,8 +197,9 @@
                         android:layout_gravity="center"
                         android:layout_weight="2"
                         android:fontFamily="@font/lato"
-                        android:gravity="bottom"
-                        android:text="@string/bid" />
+                        android:gravity="bottom|center"
+                        android:text="@string/bid"
+                        android:textAlignment="center" />
 
                 </TableRow>
 
@@ -183,25 +225,19 @@
                     android:id="@+id/bidsRow4"
                     layout="@layout/bids_table_row"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
+                    android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow5"
                     layout="@layout/bids_table_row"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
+                    android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow6"
                     layout="@layout/bids_table_row"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
+                    android:layout_height="wrap_content" />
 
                 <TableRow
                     android:layout_width="0sp"
@@ -244,39 +280,6 @@
                 </TableRow>
 
             </TableLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12sp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/continueButton"
-                    android:layout_width="0sp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8sp"
-                    android:layout_marginEnd="8sp"
-                    android:layout_weight="1"
-                    android:onClick="continueButton"
-                    android:paddingStart="8sp"
-                    android:paddingLeft="8sp"
-                    android:paddingTop="8sp"
-                    android:paddingEnd="8sp"
-                    android:paddingRight="8sp"
-                    android:paddingBottom="8sp"
-                    android:text="@string/continue_text"
-                    android:textSize="20sp"
-                    tools:ignore="ButtonStyle" />
-            </LinearLayout>
-
 
         </LinearLayout>
     </ScrollView>

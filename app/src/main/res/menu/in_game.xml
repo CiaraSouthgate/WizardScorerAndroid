@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item
+        android:id="@+id/scorecard"
+        android:title="@string/scorecard" />
+    <item
+        android:id="@+id/newGame"
+        android:title="@string/new_game" />
     <item
         android:id="@+id/loadSaved"
-        android:enabled="false"
-        android:icon="@drawable/ic_baseline_save_24"
         android:title="@string/saved_games" />
     <item
-        android:id="@+id/alternateRules"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:title="@string/alternate_rules" />
-    <item
         android:id="@+id/contact"
-        android:icon="@drawable/ic_baseline_email_24"
         android:title="@string/contact_developer" />
 </menu>

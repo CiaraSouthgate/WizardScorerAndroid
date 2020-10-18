@@ -1,83 +1,56 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
+import static com.ciarasouthgate.wizardscorekeeper.Constants.GAME_ID;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
-import static com.google.android.material.snackbar.Snackbar.LENGTH_LONG;
-
-public class Tricks extends AppCompatActivity {
-    private Game game;
-    private Player[] players;
-    private Player dealer;
-    private int dealerInt;
-    private int currentRound;
-    private int totalRounds;
-    private int trickSum;
-
+public class Tricks extends BidsTricksActivity {
     private TableRow[] rows;
-    private TextView[] playerNames;
-    private TextView[] playerScores;
+    private TextView[] names;
+    private TextView[] scores;
     private TextView[] bids;
     private EditText[] tricks;
 
-    private TextView roundTitle;
-    private TextView dealerName;
     private TableLayout trickTable;
     private TextView trickTotal;
     private Button nextRound;
 
-    CoordinatorLayout snackbar;
+    private int trickSum;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tricks);
 
-        game = getIntent().getParcelableExtra("game");
-        players = game.getPlayers();
-        currentRound = game.getCurrent();
-        totalRounds = game.getTotalRounds();
-        dealerInt = (currentRound - 1) % players.length;
-        dealer = players[dealerInt];
-
-        roundTitle = findViewById(R.id.roundTitle);
-        dealerName = findViewById(R.id.dealerName);
         trickTable = findViewById(R.id.tricksTable);
         trickTotal = findViewById(R.id.trickTotal);
-        nextRound = findViewById(R.id.nextRoundButton);
+        nextRound = findViewById(R.id.continueButton);
 
-        playerNames = new TextView[players.length];
-        playerScores = new TextView[players.length];
+        names = new TextView[players.length];
+        scores = new TextView[players.length];
         bids = new TextView[players.length];
         tricks = new EditText[players.length];
 
-        snackbar = findViewById(R.id.error);
-
         rows = new TableRow[6];
 
-        String roundString = "Round " + currentRound + " of " + totalRounds;
-        roundTitle.setText(roundString);
-
+        setTitles();
         setArrays();
         setPlayers();
         showRows();
         setBoxListeners();
     }
 
-    private void setArrays() {
+    void setArrays() {
         for (int i = 1; i < trickTable.getChildCount() - 1; i++) {
             View view = trickTable.getChildAt(i);
             rows[i - 1] = (TableRow) view;
@@ -88,20 +61,21 @@ public class Tricks extends AppCompatActivity {
             View score = rows[i].getChildAt(1);
             View bid = rows[i].getChildAt(2);
             View trick = rows[i].getChildAt(3);
-            playerNames[i] = (TextView) player;
-            playerScores[i] = (TextView) score;
+            names[i] = (TextView) player;
+            scores[i] = (TextView) score;
             bids[i] = (TextView) bid;
             tricks[i] = (EditText) trick;
         }
     }
 
-    private void setPlayers() {
-        dealerName.setText(dealer.getName());
+    @SuppressLint("SetTextI18n")
+    void setPlayers() {
         for (int i = 1; i <= players.length; i++) {
             Player current = players[(dealerInt + i) % players.length];
-            playerNames[i - 1].setText(current.getName());
-            playerScores[i - 1].setText(Integer.toString(current.getScore()));
-            bids[i - 1].setText((Integer.toString(current.getBid())));
+            names[i - 1].setText(current.getName());
+            scores[i - 1].setText(Integer.toString(current.getScore()));
+            bids[i - 1].setText((Integer.toString(current.getLatestBid())));
+            tricks[i - 1].getText().clear();
         }
     }
 
@@ -124,32 +98,17 @@ public class Tricks extends AppCompatActivity {
 
     private void setBoxListeners() {
         for (EditText e : tricks) {
-            e.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    updateTotals();
-                }
-            });
-
-            e.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                @Override
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        updateTotals();
-                        return true;
-                    }
-                    return false;
-                }
-            });
+            e.setOnFocusChangeListener((v, hasFocus) -> updateTotals());
         }
     }
 
-    private void updateTotals() {
+    @SuppressLint("SetTextI18n")
+    void updateTotals() {
         trickSum = 0;
         for (EditText t : tricks) {
-            String bidString = t.getText().toString();
-            if (!bidString.equals("")) {
-                int bid = Integer.parseInt(bidString);
+            String trickString = t.getText().toString();
+            if (!trickString.isEmpty()) {
+                int bid = Integer.parseInt(trickString);
                 trickSum += bid;
             }
         }
@@ -157,59 +116,51 @@ public class Tricks extends AppCompatActivity {
     }
 
     public void nextRoundButton(View v) {
-        boolean empty = false;
-        for (int i = 0; i < tricks.length; i++) {
-            EditText current = tricks[i];
-            if (current.getText().toString().equals("")) {
-                empty = true;
-                Snackbar.make(snackbar, R.string.trickError, LENGTH_LONG).show();
-                break;
+        clearFocus();
+        for (EditText current : tricks) {
+            if (current.getText().toString().isEmpty()) {
+                Toast.makeText(this, R.string.trickError, Toast.LENGTH_LONG).show();
+                return;
             }
         }
 
-        if (!empty) {
-            updateTotals();
-            if (!(trickSum == currentRound)) {
-                Snackbar.make(snackbar, R.string.invalidQuantity, LENGTH_LONG).show();
-            } else {
-                getTricks();
-                updateScores();
-                game.nextRound();
-                toNext();
-            }
+        if (!(trickSum == numTricks)) {
+            Toast.makeText(this, R.string.invalidQuantity, Toast.LENGTH_LONG).show();
+            return;
         }
+
+        getTricks();
+        toNext();
     }
 
-    private void getTricks() {
+    public void getTricks() {
         for (int i = 1; i <= players.length; i++) {
             Player current = players[(dealerInt + i) % players.length];
             String trickString = tricks[i - 1].getText().toString();
             int trick = Integer.parseInt(trickString);
-            current.setTricks(trick);
-        }
-    }
-
-    public void updateScores() {
-        for (Player p : players) {
-            p.updateScore();
+            current.endRound(trick);
         }
     }
 
     public void toNext() {
+        game.increaseRound();
+        saveGame(game);
         if (currentRound < totalRounds) {
-            Intent intent = new Intent(this, Bids.class);
-            intent.putExtra("game", game);
-            startActivity(intent);
+            toBids(null);
         } else {
-            Intent intent = new Intent(this, Final.class);
-            intent.putExtra("game", game);
-            startActivity(intent);
+            toFinal();
         }
     }
 
-    public void editBids(View v) {
+    public void toBids(View v) {
         Intent intent = new Intent(this, Bids.class);
-        intent.putExtra("game", game);
+        intent.putExtra(GAME_ID, gameId);
+        startActivity(intent);
+    }
+
+    public void toFinal() {
+        Intent intent = new Intent(this, Final.class);
+        intent.putExtra(GAME_ID, gameId);
         startActivity(intent);
     }
 }

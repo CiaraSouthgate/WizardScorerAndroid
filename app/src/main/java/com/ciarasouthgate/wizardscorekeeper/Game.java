@@ -1,81 +1,74 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import java.time.LocalDateTime;
 
-public class Game implements Parcelable {
-    private Player[] players;
-    private int current;
-    private int totalRounds;
-    private boolean dealerAllowedEqual;
+import static com.ciarasouthgate.wizardscorekeeper.Constants.SAVE_FORMAT;
 
-    public Game(Player[] players) {
-        current = 1;
-        dealerAllowedEqual = true;
+public class Game implements Comparable<Game> {
+    private final String id;
+    private final int numRounds;
+    private final boolean cdnRules;
+    private final boolean noEven;
+    private final Integer maxTricks;
+    private final Player[] players;
+    private int currentRound;
+    private String lastSave;
+
+    public Game(int numRounds, boolean cdnRules, boolean noEven,
+                Integer maxTricks, Player[] players) {
+        this.id = LocalDateTime.now().format(SAVE_FORMAT);
+        this.numRounds = numRounds;
+        this.cdnRules = cdnRules;
+        this.noEven = noEven;
+        this.maxTricks = maxTricks;
         this.players = players;
-        switch (players.length) {
-            case 3:
-                totalRounds = 20;
-                break;
-            case 4:
-                totalRounds = 15;
-                break;
-            case 5:
-                totalRounds = 12;
-                break;
-            case 6:
-                totalRounds = 10;
-                break;
-        }
+        this.currentRound = 1;
+        this.lastSave = LocalDateTime.now().format(SAVE_FORMAT);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getNumRounds() {
+        return numRounds;
+    }
+
+    public String getLastSave() {
+        return lastSave;
+    }
+
+    public int getCurrentRound() {
+        return currentRound;
+    }
+
+    public boolean isCdnRule() {
+        return cdnRules;
+    }
+
+    public boolean isNoEven() {
+        return noEven;
+    }
+
+    public Integer getMaxTricks() {
+        return maxTricks;
     }
 
     public Player[] getPlayers() {
         return players;
     }
 
-    public int getCurrent() {
-        return current;
+    public void increaseRound() {
+        currentRound++;
     }
 
-    public int getTotalRounds() {
-        return totalRounds;
-    }
-
-    public void nextRound() {
-        current++;
+    public void updateSave() {
+        this.lastSave = LocalDateTime.now().format(SAVE_FORMAT);
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedArray(players, flags);
-        dest.writeInt(current);
-        dest.writeInt(totalRounds);
-        dest.writeInt(dealerAllowedEqual ? 1 : 0);
+    public int compareTo(Game other) {
+        return this.lastSave.compareTo(other.lastSave);
     }
-
-    private Game(Parcel in) {
-        players = in.createTypedArray(Player.CREATOR);
-        current = in.readInt();
-        totalRounds = in.readInt();
-        dealerAllowedEqual = (in.readInt() == 0) ? false : true;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Parcelable.Creator<Game> CREATOR
-            = new Parcelable.Creator<Game>() {
-
-        @Override
-        public Game createFromParcel(Parcel in) {
-            return new Game(in);
-        }
-
-        @Override
-        public Game[] newArray(int size) {
-            return new Game[size];
-        }
-    };
 }
+

@@ -9,10 +9,9 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.ciarasouthgate.wizardscorekeeper.Constants.GAME_ID;
 
-public class Final extends AppCompatActivity {
-    private Game game;
+public class Final extends GameActivity {
     private Player[] players;
     private Player winner;
 
@@ -28,7 +27,9 @@ public class Final extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final);
 
-        game = getIntent().getParcelableExtra("game");
+        String gameId = getIntent().getStringExtra(GAME_ID);
+        Game game = readGame(gameId);
+
         players = game.getPlayers();
 
         Arrays.sort(players);
@@ -85,7 +86,7 @@ public class Final extends AppCompatActivity {
     }
 
     public void newGame(View v) {
-        Intent intent = new Intent(this, PlayerSetup.class);
+        Intent intent = new Intent(this, GameSetup.class);
         startActivity(intent);
     }
 }

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Switch;
 
@@ -21,15 +20,12 @@ public class ContactDev extends AppCompatActivity {
         setContentView(R.layout.activity_contact_dev);
 
         appBar = findViewById(R.id.rulesAppBar);
-        appBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == (R.id.backButton)) {
-                    finish();
-                    overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-                }
-                return true;
+        appBar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == (R.id.backButton)) {
+                finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             }
+            return true;
         });
 
         deviceInfo = findViewById(R.id.deviceInfoSwitch);

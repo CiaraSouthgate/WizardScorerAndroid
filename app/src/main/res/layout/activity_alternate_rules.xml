@@ -24,7 +24,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="0sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,7 @@
                 android:layout_columnSpan="1"
                 android:layout_gravity="center_vertical"
                 android:labelFor="@id/cdnRuleTitle"
-                android:minWidth="56dp" />
+                android:minWidth="56sp" />
 
             <TextView
                 android:id="@+id/cdnRuleInfo"
@@ -85,7 +85,7 @@
             <View
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1sp"
                 android:layout_row="4"
                 android:layout_columnSpan="2"
                 android:layout_marginTop="3sp"
@@ -116,7 +116,7 @@
                 android:layout_columnSpan="1"
                 android:layout_gravity="center_vertical"
                 android:labelFor="@id/noEvenTitle"
-                android:minWidth="56dp" />
+                android:minWidth="56sp" />
 
             <TextView
                 android:id="@+id/noEvenInfo"
@@ -136,7 +136,7 @@
             <View
                 android:id="@+id/divider3"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1sp"
                 android:layout_row="7"
                 android:layout_columnSpan="2"
                 android:background="?android:attr/listDivider" />
@@ -165,7 +165,7 @@
                 android:layout_columnSpan="1"
                 android:layout_gravity="center_vertical"
                 android:labelFor="@id/noEvenTitle"
-                android:minWidth="56dp" />
+                android:minWidth="56sp" />
 
             <TextView
                 android:id="@+id/oneToXInfo"
@@ -185,7 +185,7 @@
             <View
                 android:id="@+id/divider4"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1sp"
                 android:layout_row="11"
                 android:layout_columnSpan="2"
                 android:background="?android:attr/listDivider" />
