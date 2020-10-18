@@ -6,18 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 
 import static com.ciarasouthgate.wizardscorekeeper.Constants.CDN_RULE;
 import static com.ciarasouthgate.wizardscorekeeper.Constants.GAME_ID;
 import static com.ciarasouthgate.wizardscorekeeper.Constants.NO_EVEN;
 import static com.ciarasouthgate.wizardscorekeeper.Constants.ONE_TO_X;
 
-public class GameSetup extends GameActivity {
-
+public class GameSetup extends AppActivity {
     private EditText Player1;
     private EditText Player2;
     private EditText Player3;
@@ -27,12 +24,27 @@ public class GameSetup extends GameActivity {
 
     private int playerCount;
 
+    static int getRoundCount(int numPlayers) {
+        switch (numPlayers) {
+            case 3:
+                return 20;
+            case 4:
+                return 15;
+            case 5:
+                return 12;
+            case 6:
+                return 10;
+            default:
+                return -1;
+        }
+    }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_setup);
+        appBar = findViewById(R.id.setupAppBar);
+        setAppBarMenu();
 
         Player1 = findViewById(R.id.player1name);
         Player2 = findViewById(R.id.player2name);
@@ -41,7 +53,11 @@ public class GameSetup extends GameActivity {
         Player5 = findViewById(R.id.player5name);
         Player6 = findViewById(R.id.player6name);
 
-        Toolbar appBar = findViewById(R.id.setupAppBar);
+        playerCount = 3;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    void setAppBarMenu() {
         appBar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.loadSaved:
@@ -52,13 +68,11 @@ public class GameSetup extends GameActivity {
                     overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                     break;
                 case R.id.contact:
-                    startActivity(new Intent(getApplicationContext(), ContactDev.class));
-                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+                    toContactActivity();
                     break;
             }
             return true;
         });
-        playerCount = 3;
     }
 
     public void addPlayer(View v) {
@@ -76,7 +90,7 @@ public class GameSetup extends GameActivity {
                 playerCount++;
                 break;
             case 6:
-                Toast.makeText(this, R.string.max_players, Toast.LENGTH_LONG).show();
+                displayError(getString(R.string.max_players));
                 break;
             default:
                 break;
@@ -86,7 +100,7 @@ public class GameSetup extends GameActivity {
     public void removePlayer(View v) {
         switch (playerCount) {
             case 3:
-                Toast.makeText(this, R.string.min_players, Toast.LENGTH_LONG).show();
+                displayError(getString(R.string.min_players));
                 break;
             case 4:
                 Player4.setVisibility(View.GONE);
@@ -127,7 +141,7 @@ public class GameSetup extends GameActivity {
 
         for (String s : playerNames) {
             if (s.isEmpty()) {
-                Toast.makeText(this, R.string.playerNameError, Toast.LENGTH_LONG).show();
+                displayError(getString(R.string.playerNameError));
                 return;
             }
         }
@@ -169,7 +183,7 @@ public class GameSetup extends GameActivity {
             intent.putExtra(GAME_ID, game.getId());
             startActivity(intent);
         } else {
-            Toast.makeText(this, getString(R.string.start_error), Toast.LENGTH_LONG).show();
+            displayError(getString(R.string.start_error));
         }
     }
 }

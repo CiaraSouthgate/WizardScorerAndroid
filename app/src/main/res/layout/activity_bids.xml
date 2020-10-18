@@ -6,23 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Bids">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <include
+        layout="@layout/appbar_in_game"
         android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/bidsScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/bidsAppBar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/in_game"
-            app:title="@string/app_name" />
-    </com.google.android.material.appbar.AppBarLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/bidsScrollView"
@@ -163,25 +153,25 @@
 
                 <include
                     android:id="@+id/bidsRow1"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow2"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow3"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow4"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
@@ -189,7 +179,7 @@
 
                 <include
                     android:id="@+id/bidsRow5"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
@@ -197,7 +187,7 @@
 
                 <include
                     android:id="@+id/bidsRow6"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
@@ -265,7 +255,7 @@
                     android:layout_marginStart="8sp"
                     android:layout_marginEnd="8sp"
                     android:layout_weight="1"
-                    android:onClick="continueButton"
+                    android:onClick="onContinuePressed"
                     android:paddingStart="8sp"
                     android:paddingLeft="8sp"
                     android:paddingTop="8sp"

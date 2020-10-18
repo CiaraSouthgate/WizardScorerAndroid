@@ -5,47 +5,37 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import static com.ciarasouthgate.wizardscorekeeper.Constants.GAME_ID;
 
 public class Bids extends BidsTricksActivity {
-    private TableRow[] rows;
-    private TextView[] playerNames;
-    private TextView[] playerScores;
     private EditText[] bids;
-
-    private TableLayout bidTable;
-    private TextView bidTotal;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    void setLayout() {
         setContentView(R.layout.activity_bids);
+    }
 
-        bidTable = findViewById(R.id.bidsTable);
-        bidTotal = findViewById(R.id.bidTotal);
-
-        playerNames = new TextView[players.length];
-        playerScores = new TextView[players.length];
-        bids = new EditText[players.length];
-
-        rows = new TableRow[6];
-
-        setTitles();
-        setArrays();
-        setPlayers();
-        showRows();
-        setBoxListeners();
+    void getViews() {
+        appBar = findViewById(R.id.appBar);
+        table = findViewById(R.id.bidsTable);
+        total = findViewById(R.id.bidTotal);
     }
 
     void setArrays() {
-        for (int i = 1; i < bidTable.getChildCount() - 1; i++) {
-            View view = bidTable.getChildAt(i);
+        playerNames = new TextView[players.length];
+        scores = new TextView[players.length];
+        bids = new EditText[players.length];
+        rows = new TableRow[6];
+
+        for (int i = 1; i < table.getChildCount() - 1; i++) {
+            View view = table.getChildAt(i);
             rows[i - 1] = (TableRow) view;
         }
 
@@ -54,7 +44,7 @@ public class Bids extends BidsTricksActivity {
             View score = rows[i].getChildAt(1);
             View bid = rows[i].getChildAt(2);
             playerNames[i] = (TextView) player;
-            playerScores[i] = (TextView) score;
+            scores[i] = (TextView) score;
             bids[i] = (EditText) bid;
         }
     }
@@ -64,25 +54,11 @@ public class Bids extends BidsTricksActivity {
         for (int i = 1; i <= players.length; i++) {
             Player current = players[(dealerInt + i) % players.length];
             playerNames[i - 1].setText(current.getName());
-            playerScores[i - 1].setText(Integer.toString(current.getScore()));
+            scores[i - 1].setText(Integer.toString(current.getScore()));
         }
     }
 
-    private void showRows() {
-        switch (players.length) {
-            case 6:
-                rows[5].setVisibility(View.VISIBLE);
-            case 5:
-                rows[4].setVisibility(View.VISIBLE);
-            case 4:
-                rows[3].setVisibility(View.VISIBLE);
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void setBoxListeners() {
+    void setBoxListeners() {
         for (EditText e : bids) {
             e.setOnFocusChangeListener((v, hasFocus) -> updateTotals());
         }
@@ -98,29 +74,26 @@ public class Bids extends BidsTricksActivity {
                 sum += bid;
             }
         }
-        bidTotal.setText(Integer.toString(sum));
+        total.setText(Integer.toString(sum));
     }
 
-    public void continueButton(View v) {
+    public void onContinuePressed(View v) {
         clearFocus();
-        for (EditText current : bids) {
-            if (current.getText().toString().isEmpty()) {
-                Toast.makeText(this, R.string.bid_error, Toast.LENGTH_LONG).show();
-                return;
-            }
-        }
-
-        getBids();
-        toTricks();
-    }
-
-    public void getBids() {
         for (int i = 1; i <= players.length; i++) {
             Player current = players[(dealerInt + i) % players.length];
             String bidString = bids[i - 1].getText().toString();
+            if (bidString.isEmpty()) {
+                displayError(getString(R.string.bid_error));
+                return;
+            }
             int bid = Integer.parseInt(bidString);
+            if (bid > numTricks) {
+                displayError(getString(R.string.bid_over_max));
+                return;
+            }
             current.startNewRound(bid);
         }
+        toTricks();
     }
 
     public void toTricks() {

@@ -3,54 +3,45 @@ package com.ciarasouthgate.wizardscorekeeper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.Arrays;
 
-import static com.ciarasouthgate.wizardscorekeeper.Constants.GAME_ID;
-
-public class Final extends GameActivity {
-    private Player[] players;
+public class Final extends InGameActivity {
     private Player winner;
-
-    private TableRow[] rows;
-    private TextView[] playerNames;
-    private TextView[] playerScores;
-
-    private TextView winnerName;
-    private TableLayout scoresTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_final);
-
-        String gameId = getIntent().getStringExtra(GAME_ID);
-        Game game = readGame(gameId);
-
-        players = game.getPlayers();
-
-        Arrays.sort(players);
-        winner = players[0];
-
-        winnerName = findViewById(R.id.winnerName);
-        scoresTable = findViewById(R.id.scoresTable);
-
-        playerNames = new TextView[players.length];
-        playerScores = new TextView[players.length];
-
-        rows = new TableRow[6];
-
-        setArrays();
-        setPlayers();
-        showRows();
     }
 
-    private void setArrays() {
-        for (int i = 1; i < scoresTable.getChildCount(); i++) {
-            View view = scoresTable.getChildAt(i);
+    void setLayout() {
+        setContentView(R.layout.activity_final);
+    }
+
+    void getViews() {
+        appBar = findViewById(R.id.appBar);
+        table = findViewById(R.id.scoresTable);
+    }
+
+    void getGameInfo() {
+        Arrays.sort(players);
+        winner = players[0];
+    }
+
+    void setTitles() {
+        TextView winnerName = findViewById(R.id.winnerName);
+        winnerName.setText(winner.getName());
+    }
+
+    void setArrays() {
+        playerNames = new TextView[players.length];
+        scores = new TextView[players.length];
+
+        rows = new TableRow[6];
+        for (int i = 1; i < table.getChildCount(); i++) {
+            View view = table.getChildAt(i);
             rows[i - 1] = (TableRow) view;
         }
 
@@ -58,30 +49,15 @@ public class Final extends GameActivity {
             View player = rows[i].getChildAt(0);
             View score = rows[i].getChildAt(1);
             playerNames[i] = (TextView) player;
-            playerScores[i] = (TextView) score;
+            scores[i] = (TextView) score;
         }
     }
 
-    private void setPlayers() {
-        winnerName.setText(winner.getName());
+    void setPlayers() {
         for (int i = 0; i < players.length; i++) {
             Player current = players[i];
             playerNames[i].setText(current.getName());
-            playerScores[i].setText(Integer.toString(current.getScore()));
-        }
-    }
-
-    private void showRows() {
-        switch (players.length) {
-            case 6:
-                rows[5].setVisibility(View.VISIBLE);
-            case 5:
-                rows[4].setVisibility(View.VISIBLE);
-            case 4:
-                rows[3].setVisibility(View.VISIBLE);
-                break;
-            default:
-                break;
+            scores[i].setText(Integer.toString(current.getScore()));
         }
     }
 

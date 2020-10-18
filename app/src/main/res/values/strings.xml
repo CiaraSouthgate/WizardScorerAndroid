@@ -91,4 +91,5 @@
     <string name="discard">Discard</string>
     <string name="zero_num">0</string>
     <string name="winner_icon">Winner icon</string>
+    <string name="bid_over_max">You cannot bid more than the number of tricks in the round.</string>
 </resources>
