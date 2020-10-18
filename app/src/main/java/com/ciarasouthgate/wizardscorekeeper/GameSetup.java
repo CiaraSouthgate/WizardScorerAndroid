@@ -52,8 +52,7 @@ public class GameSetup extends GameActivity {
                     overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                     break;
                 case R.id.contact:
-                    startActivity(new Intent(getApplicationContext(), ContactDev.class));
-                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+                    toContactActivity();
                     break;
             }
             return true;

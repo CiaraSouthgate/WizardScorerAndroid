@@ -1,5 +1,6 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -60,5 +61,10 @@ public abstract class GameActivity extends AppCompatActivity {
         View v = getCurrentFocus();
         if (v != null)
             v.clearFocus();
+    }
+
+    void toContactActivity() {
+        startActivity(new Intent(getApplicationContext(), ContactDev.class));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }

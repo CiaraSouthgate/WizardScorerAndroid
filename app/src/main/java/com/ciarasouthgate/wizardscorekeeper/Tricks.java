@@ -32,6 +32,8 @@ public class Tricks extends BidsTricksActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tricks);
 
+        appBar = findViewById(R.id.tricksAppBar);
+
         trickTable = findViewById(R.id.tricksTable);
         trickTotal = findViewById(R.id.trickTotal);
         nextRound = findViewById(R.id.continueButton);
@@ -43,6 +45,7 @@ public class Tricks extends BidsTricksActivity {
 
         rows = new TableRow[6];
 
+        setAppBarMenu();
         setTitles();
         setArrays();
         setPlayers();

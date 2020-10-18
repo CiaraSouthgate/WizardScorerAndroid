@@ -27,6 +27,8 @@ public class Bids extends BidsTricksActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bids);
 
+        appBar = findViewById(R.id.bidsAppBar);
+
         bidTable = findViewById(R.id.bidsTable);
         bidTotal = findViewById(R.id.bidTotal);
 
@@ -36,6 +38,7 @@ public class Bids extends BidsTricksActivity {
 
         rows = new TableRow[6];
 
+        setAppBarMenu();
         setTitles();
         setArrays();
         setPlayers();

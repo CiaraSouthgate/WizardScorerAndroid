@@ -1,8 +1,10 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -18,6 +20,7 @@ public abstract class BidsTricksActivity extends GameActivity {
     int numTricks;
     int currentRound;
     int totalRounds;
+    Toolbar appBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +41,30 @@ public abstract class BidsTricksActivity extends GameActivity {
 
         dealerInt = (currentRound - 1) % players.length;
         dealer = players[dealerInt];
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    void setAppBarMenu() {
+        appBar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.scorecard:
+                    //TODO create scorecard
+                    break;
+                case R.id.newGame:
+                    backButtonHandler().setTitle(getString(R.string.new_game)).show();
+                    break;
+                case R.id.loadSaved:
+                    //TODO implement loading of saved games
+                    break;
+                case R.id.contact:
+                    toContactActivity();
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        });
+
     }
 
     void setTitles() {
