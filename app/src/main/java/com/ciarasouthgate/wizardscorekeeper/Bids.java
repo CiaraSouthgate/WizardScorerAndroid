@@ -1,58 +1,32 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
-import android.content.DialogInterface;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
+import static com.ciarasouthgate.wizardscorekeeper.Constants.GAME_ID;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
-import static com.google.android.material.snackbar.Snackbar.LENGTH_LONG;
-
-public class Bids extends AppCompatActivity {
-    private Game game;
-    private Player[] players;
-    private Player dealer;
-    private int dealerInt;
-    private int currentRound;
-    private int totalRounds;
-
+public class Bids extends BidsTricksActivity {
     private TableRow[] rows;
     private TextView[] playerNames;
     private TextView[] playerScores;
     private EditText[] bids;
 
-    private TextView roundTitle;
-    private TextView dealerName;
     private TableLayout bidTable;
     private TextView bidTotal;
 
-    CoordinatorLayout snackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bids);
 
-        game = getIntent().getParcelableExtra("game");
-        players = game.getPlayers();
-        currentRound = game.getCurrent();
-        totalRounds = game.getTotalRounds();
-        dealerInt = (currentRound - 1) % players.length;
-        dealer = players[dealerInt];
-
-        roundTitle = findViewById(R.id.roundTitle);
-        dealerName = findViewById(R.id.dealerName);
         bidTable = findViewById(R.id.bidsTable);
         bidTotal = findViewById(R.id.bidTotal);
 
@@ -60,20 +34,16 @@ public class Bids extends AppCompatActivity {
         playerScores = new TextView[players.length];
         bids = new EditText[players.length];
 
-        snackbar = findViewById(R.id.error);
-
         rows = new TableRow[6];
 
-        String roundString = "Round " + currentRound + " of " + totalRounds;
-        roundTitle.setText(roundString);
-
+        setTitles();
         setArrays();
         setPlayers();
         showRows();
         setBoxListeners();
     }
 
-    private void setArrays() {
+    void setArrays() {
         for (int i = 1; i < bidTable.getChildCount() - 1; i++) {
             View view = bidTable.getChildAt(i);
             rows[i - 1] = (TableRow) view;
@@ -89,8 +59,8 @@ public class Bids extends AppCompatActivity {
         }
     }
 
-    private void setPlayers() {
-        dealerName.setText(dealer.getName());
+    @SuppressLint("SetTextI18n")
+    void setPlayers() {
         for (int i = 1; i <= players.length; i++) {
             Player current = players[(dealerInt + i) % players.length];
             playerNames[i - 1].setText(current.getName());
@@ -114,27 +84,12 @@ public class Bids extends AppCompatActivity {
 
     private void setBoxListeners() {
         for (EditText e : bids) {
-            e.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    updateTotals();
-                }
-            });
-
-            e.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                @Override
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        updateTotals();
-                        return true;
-                    }
-                    return false;
-                }
-            });
+            e.setOnFocusChangeListener((v, hasFocus) -> updateTotals());
         }
     }
 
-    private void updateTotals() {
+    @SuppressLint("SetTextI18n")
+    void updateTotals() {
         int sum = 0;
         for (EditText b : bids) {
             String bidString = b.getText().toString();
@@ -147,65 +102,31 @@ public class Bids extends AppCompatActivity {
     }
 
     public void continueButton(View v) {
-        boolean empty = false;
-        for (int i = 0; i < bids.length; i++) {
-            EditText current = bids[i];
-            if (current.getText().toString().equals("")) {
-                empty = true;
-                Snackbar.make(snackbar, R.string.bidError, LENGTH_LONG).show();
-                break;
+        clearFocus();
+        for (EditText current : bids) {
+            if (current.getText().toString().isEmpty()) {
+                Toast.makeText(this, R.string.bid_error, Toast.LENGTH_LONG).show();
+                return;
             }
         }
 
-        if (!empty) {
-            getBids();
-            toTricks();
-        }
+        getBids();
+        toTricks();
     }
 
-    public void getBids(){
+    public void getBids() {
         for (int i = 1; i <= players.length; i++) {
             Player current = players[(dealerInt + i) % players.length];
             String bidString = bids[i - 1].getText().toString();
             int bid = Integer.parseInt(bidString);
-            current.setBid(bid);
+            current.startNewRound(bid);
         }
     }
 
-    public void toTricks(){
+    public void toTricks() {
+        saveGame(game);
         Intent intent = new Intent(this, Tricks.class);
-        intent.putExtra("game", game);
-        startActivity(intent);
-    }
-
-    public void onBackPressed() {
-        backButtonHandler();
-    }
-
-    public void backButtonHandler() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(Bids.this);
-        alert.setTitle("End game?");
-        alert.setMessage("Do you want to end the current game " +
-                "and return to the player setup screen?");
-        alert.setPositiveButton("YES",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        newGame();
-                    }
-                });
-        alert.setNegativeButton("NO",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-        alert.show();
-    }
-
-    public void newGame() {
-        Intent intent = new Intent(this, PlayerSetup.class);
+        intent.putExtra(GAME_ID, gameId);
         startActivity(intent);
     }
 }

@@ -6,10 +6,11 @@
     <string name="max_players">Maximum player count is 6</string>
     <string name="min_players">Minimum player count is 3</string>
     <string name="dealer_icon">Dealer icon</string>
+    <string name="round_num">Round %d of %d</string>
     <string name="dealer">Dealer</string>
-    <string name="enter_bids">Enter bids</string>
+    <string name="enter_bids">Enter Bids</string>
     <string name="player_bid">Player bid</string>
-    <string name="bidError">Enter a bid for all players</string>
+    <string name="bid_error">Enter a bid for all players</string>
     <string name="trickError">Enter a trick count for all players</string>
     <string name="invalidQuantity">Invalid quantity of tricks</string>
     <string name="final_scores">Final Scores</string>
@@ -21,11 +22,11 @@
     <string name="total">Total</string>
     <string name="continue_text">Continue</string>
     <string name="enter_tricks">Enter Tricks</string>
-    <string name="took">Took</string>
+    <string name="taken">Taken</string>
     <string name="next_round">Next round</string>
     <string name="edit_bids">Edit bids</string>
     <string name="wizard_logo">Wizard logo</string>
-    <string name="load_saved_game">Load Saved Game</string>
+    <string name="saved_games">Saved Games</string>
     <string name="contact_developer">Contact Developer</string>
     <string name="contact">Contact</string>
     <string name="feedback_email_content">
@@ -72,4 +73,22 @@
     <string name="include_info">
         Include device information (please leave enabled if you\'re reporting a bug)
     </string>
+    <string name="start_error">Error starting game. Please try again.</string>
+    <string name="scorecard">Scorecard</string>
+    <string name="no_even_toast">
+        The number of tricks bid is not allowed to equal the total number of bids in the round.
+        The dealer must change their bid.
+    </string>
+    <string name="cdn_rule_toast">
+        The number of tricks bid is not allowed to equal the total number of bids in the round when
+        the dealer is in the lead. The dealer must change their bid.
+    </string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="leave_game_title">Leave game</string>
+    <string name="save_game_dialog">Would you like to save your game?</string>
+    <string name="save">Save</string>
+    <string name="discard">Discard</string>
+    <string name="zero_num">0</string>
+    <string name="winner_icon">Winner icon</string>
 </resources>

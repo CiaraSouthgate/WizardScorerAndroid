@@ -14,7 +14,7 @@
         <activity
             android:name=".Final"
             android:screenOrientation="portrait" />
-        <activity android:name=".PlayerSetup">
+        <activity android:name=".GameSetup">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
