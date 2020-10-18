@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
@@ -18,7 +17,7 @@ import static com.ciarasouthgate.wizardscorekeeper.Constants.ONE_TO_X;
 /**
  * An activity that allows the user to adjust their game settings.
  */
-public class AlternateRules extends GameActivity {
+public class AlternateRules extends AppActivity {
     Toolbar appBar;
 
     SwitchMaterial cdnRuleSwitch;
@@ -39,13 +38,7 @@ public class AlternateRules extends GameActivity {
         oneToXSwitch = findViewById(R.id.oneToXSwitch);
 
         appBar = findViewById(R.id.rulesAppBar);
-        appBar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == (R.id.editBidsButton)) {
-                finish();
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-            }
-            return true;
-        });
+        setAppBarMenu();
 
         // Read current rules values from SharedPreferences to set switches to appropriate positions
         cdnRuleActive = rulesPrefs.getBoolean(CDN_RULE, false);
@@ -64,6 +57,16 @@ public class AlternateRules extends GameActivity {
             cdnRuleSwitch.setEnabled(false);
 
         setListeners();
+    }
+
+    void setAppBarMenu() {
+        appBar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == (R.id.backButton)) {
+                finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+            }
+            return true;
+        });
     }
 
     /**
@@ -99,7 +102,7 @@ public class AlternateRules extends GameActivity {
             cdnRuleActive = checked;
         } else {
             cdnRuleSwitch.setChecked(!checked);
-            Toast.makeText(this, getString(R.string.prefs_err), Toast.LENGTH_LONG).show();
+            displayError(getString(R.string.prefs_err));
         }
     }
 
@@ -109,7 +112,7 @@ public class AlternateRules extends GameActivity {
             noEvenActive = checked;
         } else {
             noEvenSwitch.setChecked(!checked);
-            Toast.makeText(this, getString(R.string.prefs_err), Toast.LENGTH_LONG).show();
+            displayError(getString(R.string.prefs_err));
         }
     }
 
@@ -118,7 +121,7 @@ public class AlternateRules extends GameActivity {
             oneToXActive = checked;
         } else {
             oneToXSwitch.setChecked(!checked);
-            Toast.makeText(this, getString(R.string.prefs_err), Toast.LENGTH_LONG).show();
+            displayError(getString(R.string.prefs_err));
         }
     }
 

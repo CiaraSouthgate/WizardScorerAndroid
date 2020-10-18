@@ -1,35 +1,29 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 
-import static com.ciarasouthgate.wizardscorekeeper.Constants.GAME_ID;
-
-public abstract class BidsTricksActivity extends GameActivity {
-    String gameId;
-    Game game;
-    Player[] players;
+public abstract class BidsTricksActivity extends InGameActivity {
     Player dealer;
+
     int dealerInt;
     int numTricks;
     int currentRound;
     int totalRounds;
-    Toolbar appBar;
+
+    TextView total;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setBoxListeners();
+    }
 
-        gameId = getIntent().getStringExtra(GAME_ID);
-        game = readGame(gameId);
+    abstract void setBoxListeners();
 
-        players = game.getPlayers();
+    void getGameInfo() {
         currentRound = game.getCurrentRound();
         totalRounds = game.getNumRounds();
 
@@ -41,29 +35,6 @@ public abstract class BidsTricksActivity extends GameActivity {
 
         dealerInt = (currentRound - 1) % players.length;
         dealer = players[dealerInt];
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    void setAppBarMenu() {
-        appBar.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.scorecard:
-                    //TODO create scorecard
-                    break;
-                case R.id.newGame:
-                    backButtonHandler().setTitle(getString(R.string.new_game)).show();
-                    break;
-                case R.id.loadSaved:
-                    //TODO implement loading of saved games
-                    break;
-                case R.id.contact:
-                    toContactActivity();
-                    break;
-                default:
-                    break;
-            }
-            return true;
-        });
 
     }
 
@@ -76,39 +47,10 @@ public abstract class BidsTricksActivity extends GameActivity {
         dealerName.setText(dealer.getName());
     }
 
-    abstract void setArrays();
-
-    abstract void setPlayers();
-
-    abstract void updateTotals();
-
-    AlertDialog.Builder backButtonHandler() {
-        return new AlertDialog.Builder(getApplicationContext())
-                .setTitle(getString(R.string.leave_game_title))
-                .setMessage(getString(R.string.save_game_dialog))
-                .setPositiveButton(getString(R.string.save), (dialog, which) -> {
-                    saveGame(game);
-                    toGameSetup();
-                })
-                .setNegativeButton(getString(R.string.discard), (dialog, which) -> {
-                    savedGames.edit()
-                            .remove(game.getId())
-                            .apply();
-                    toGameSetup();
-                })
-                .setNeutralButton(getString(R.string.cancel),
-                        (dialog, which) -> dialog.cancel());
-    }
-
-    void toGameSetup() {
-        Intent intent = new Intent(getApplicationContext(), GameSetup.class);
-        startActivity(intent);
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        backButtonHandler().show();
+        newGameDialog(getString(R.string.leave_game_title)).show();
     }
 
 }

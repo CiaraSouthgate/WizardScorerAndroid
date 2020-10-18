@@ -6,56 +6,49 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import static com.ciarasouthgate.wizardscorekeeper.Constants.GAME_ID;
 
 public class Tricks extends BidsTricksActivity {
-    private TableRow[] rows;
-    private TextView[] names;
-    private TextView[] scores;
     private TextView[] bids;
     private EditText[] tricks;
 
-    private TableLayout trickTable;
-    private TextView trickTotal;
     private Button nextRound;
-
     private int trickSum;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (currentRound == totalRounds) {
+            nextRound.setText(R.string.final_scores);
+        }
+    }
+
+    void setLayout() {
         setContentView(R.layout.activity_tricks);
+    }
 
-        appBar = findViewById(R.id.tricksAppBar);
+    void getViews() {
+        appBar = findViewById(R.id.appBar);
 
-        trickTable = findViewById(R.id.tricksTable);
-        trickTotal = findViewById(R.id.trickTotal);
+        table = findViewById(R.id.tricksTable);
+        total = findViewById(R.id.trickTotal);
         nextRound = findViewById(R.id.continueButton);
 
-        names = new TextView[players.length];
+        playerNames = new TextView[players.length];
         scores = new TextView[players.length];
         bids = new TextView[players.length];
         tricks = new EditText[players.length];
 
         rows = new TableRow[6];
-
-        setAppBarMenu();
-        setTitles();
-        setArrays();
-        setPlayers();
-        showRows();
-        setBoxListeners();
     }
 
     void setArrays() {
-        for (int i = 1; i < trickTable.getChildCount() - 1; i++) {
-            View view = trickTable.getChildAt(i);
+        for (int i = 1; i < table.getChildCount() - 1; i++) {
+            View view = table.getChildAt(i);
             rows[i - 1] = (TableRow) view;
         }
 
@@ -64,7 +57,7 @@ public class Tricks extends BidsTricksActivity {
             View score = rows[i].getChildAt(1);
             View bid = rows[i].getChildAt(2);
             View trick = rows[i].getChildAt(3);
-            names[i] = (TextView) player;
+            playerNames[i] = (TextView) player;
             scores[i] = (TextView) score;
             bids[i] = (TextView) bid;
             tricks[i] = (EditText) trick;
@@ -75,31 +68,14 @@ public class Tricks extends BidsTricksActivity {
     void setPlayers() {
         for (int i = 1; i <= players.length; i++) {
             Player current = players[(dealerInt + i) % players.length];
-            names[i - 1].setText(current.getName());
+            playerNames[i - 1].setText(current.getName());
             scores[i - 1].setText(Integer.toString(current.getScore()));
             bids[i - 1].setText((Integer.toString(current.getLatestBid())));
             tricks[i - 1].getText().clear();
         }
     }
 
-    private void showRows() {
-        switch (players.length) {
-            case 6:
-                rows[5].setVisibility(View.VISIBLE);
-            case 5:
-                rows[4].setVisibility(View.VISIBLE);
-            case 4:
-                rows[3].setVisibility(View.VISIBLE);
-                break;
-            default:
-                break;
-        }
-        if (currentRound == totalRounds) {
-            nextRound.setText("Final Scores");
-        }
-    }
-
-    private void setBoxListeners() {
+    void setBoxListeners() {
         for (EditText e : tricks) {
             e.setOnFocusChangeListener((v, hasFocus) -> updateTotals());
         }
@@ -115,34 +91,29 @@ public class Tricks extends BidsTricksActivity {
                 trickSum += bid;
             }
         }
-        trickTotal.setText(Integer.toString(trickSum));
+        total.setText(Integer.toString(trickSum));
     }
 
     public void nextRoundButton(View v) {
         clearFocus();
-        for (EditText current : tricks) {
-            if (current.getText().toString().isEmpty()) {
-                Toast.makeText(this, R.string.trickError, Toast.LENGTH_LONG).show();
-                return;
-            }
-        }
 
         if (!(trickSum == numTricks)) {
-            Toast.makeText(this, R.string.invalidQuantity, Toast.LENGTH_LONG).show();
+            displayError(getString(R.string.invalidQuantity));
             return;
         }
 
-        getTricks();
-        toNext();
-    }
-
-    public void getTricks() {
         for (int i = 1; i <= players.length; i++) {
             Player current = players[(dealerInt + i) % players.length];
             String trickString = tricks[i - 1].getText().toString();
+            if (trickString.isEmpty()) {
+                displayError(getString(R.string.trickError));
+                return;
+            }
             int trick = Integer.parseInt(trickString);
             current.endRound(trick);
         }
+
+        toNext();
     }
 
     public void toNext() {
