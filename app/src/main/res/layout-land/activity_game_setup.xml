@@ -48,14 +48,12 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/logo"
                 android:layout_width="match_parent"
                 android:layout_height="150sp"
                 android:contentDescription="@string/wizard_logo"
                 app:srcCompat="@drawable/wizard_logo" />
 
             <TextView
-                android:id="@+id/playersTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
@@ -66,7 +64,6 @@
                 android:textSize="36sp" />
 
             <LinearLayout
-                android:id="@+id/buttonLayout"
                 android:layout_width="250sp"
                 android:layout_height="65sp"
                 android:layout_gravity="center"
@@ -74,7 +71,6 @@
                 android:weightSum="4">
 
                 <Button
-                    android:id="@+id/removePlayer"
                     android:layout_width="0sp"
                     android:layout_height="match_parent"
                     android:layout_gravity="start|center_vertical"
@@ -85,7 +81,6 @@
                     tools:ignore="ButtonStyle" />
 
                 <Button
-                    android:id="@+id/startButton"
                     android:layout_width="0sp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -106,7 +101,6 @@
                     tools:ignore="ButtonStyle" />
 
                 <Button
-                    android:id="@+id/addPlayer"
                     android:layout_width="0sp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -120,7 +114,6 @@
         </LinearLayout>
 
         <TableLayout
-            android:id="@+id/playerTnameable"
             android:layout_width="0sp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -129,7 +122,6 @@
             android:gravity="center">
 
             <TableRow
-                android:id="@+id/row1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="3sp">
@@ -140,7 +132,6 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/row2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3sp">
@@ -151,7 +142,6 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/row3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3sp">
@@ -162,7 +152,6 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/row4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3sp">
@@ -173,7 +162,6 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/row5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3sp">
@@ -184,7 +172,6 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/row6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3sp">

@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tricksPlayerLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
@@ -13,7 +12,7 @@
         android:layout_weight="2"
         android:contentDescription="@string/player_bid"
         android:fontFamily="@font/lato"
-        android:labelFor="@+id/tricksp1"
+        android:labelFor="@+id/tricksInput"
         android:maxWidth="150sp"
         android:textAlignment="textEnd"
         android:textColor="@color/black"
@@ -21,7 +20,6 @@
         tools:text="Player" />
 
     <TextView
-        android:id="@+id/tricksScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="1"
@@ -37,7 +35,6 @@
         tools:text="0" />
 
     <TextView
-        android:id="@+id/tricksBid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="2"

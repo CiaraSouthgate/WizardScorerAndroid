@@ -1,5 +1,6 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -50,6 +51,7 @@ public class Final extends InGameActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     void setPlayers() {
         for (int i = 0; i < players.length; i++) {
             Player current = players[i];

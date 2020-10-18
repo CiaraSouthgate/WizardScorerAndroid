@@ -30,7 +30,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/finalScoresTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4sp"
@@ -45,7 +44,6 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/winner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8sp"
@@ -102,7 +100,6 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/finalScoreTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
@@ -116,37 +113,31 @@
                 </TableRow>
 
                 <include
-                    android:id="@+id/finalRow1"
                     layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/finalRow2"
                     layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/finalRow3"
                     layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/finalRow4"
                     layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/finalRow5"
                     layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/finalRow6"
                     layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -154,7 +145,6 @@
             </TableLayout>
 
             <Button
-                android:id="@+id/newGameButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

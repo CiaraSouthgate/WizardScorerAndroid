@@ -57,7 +57,7 @@ public class GameSetup extends AppActivity {
     }
 
     @SuppressLint("NonConstantResourceId")
-    void setAppBarMenu() {
+    private void setAppBarMenu() {
         appBar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.loadSaved:

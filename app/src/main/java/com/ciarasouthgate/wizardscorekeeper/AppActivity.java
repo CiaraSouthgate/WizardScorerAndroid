@@ -29,8 +29,6 @@ public abstract class AppActivity extends AppCompatActivity {
         savedGames = getSharedPreferences(SAVED_GAMES, MODE_PRIVATE);
     }
 
-    abstract void setAppBarMenu();
-
     void displayError(String error) {
         Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
     }

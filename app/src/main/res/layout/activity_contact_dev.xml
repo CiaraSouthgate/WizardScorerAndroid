@@ -15,14 +15,12 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/contactContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="12sp">
 
             <TextView
-                android:id="@+id/contactTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12sp"
@@ -33,7 +31,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/contactText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12sp"
@@ -44,7 +41,7 @@
                 android:textColor="@android:color/tertiary_text_dark"
                 android:textSize="16sp" />
 
-            <Switch
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/deviceInfoSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +55,6 @@
                 android:textColor="@android:color/tertiary_text_dark" />
 
             <Button
-                android:id="@+id/contactButton"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,7 +64,6 @@
                 android:text="@string/contact" />
 
             <View
-                android:id="@+id/divider"
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
                 android:layout_marginTop="12sp"
@@ -76,7 +71,6 @@
                 android:background="?android:attr/listDivider" />
 
             <TextView
-                android:id="@+id/supportTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12sp"
@@ -87,7 +81,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/supportText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12sp"
@@ -99,7 +92,6 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/supportButton"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

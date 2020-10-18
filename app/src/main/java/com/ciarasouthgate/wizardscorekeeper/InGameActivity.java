@@ -54,7 +54,7 @@ public abstract class InGameActivity extends AppActivity {
     abstract void setPlayers();
 
     @SuppressLint("NonConstantResourceId")
-    void setAppBarMenu() {
+    private void setAppBarMenu() {
         appBar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.scorecard:

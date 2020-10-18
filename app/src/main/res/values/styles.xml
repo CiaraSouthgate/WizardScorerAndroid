@@ -8,15 +8,4 @@
         <item name="colorAccent">@color/red</item>
     </style>
 
-    <style name="noAnimation" parent="AppTheme">
-        <item name="android:windowAnimationStyle">@null</item>
-    </style>
-
-    <style name="slideFromLeft" parent="AppTheme">
-        <item name="android:windowAnimationStyle">@anim/slide_from_left</item>
-    </style>
-
-    <style name="slideFromRight" parent="AppTheme">
-        <item name="android:windowAnimationStyle">@anim/slide_from_right</item>
-    </style>
 </resources>
