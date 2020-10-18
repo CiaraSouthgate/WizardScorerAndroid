@@ -12,6 +12,7 @@ import static com.ciarasouthgate.wizardscorekeeper.Constants.GAME_ID;
 
 public class Bids extends BidsTricksActivity {
     private EditText[] bids;
+    private int bidSum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +75,21 @@ public class Bids extends BidsTricksActivity {
                 sum += bid;
             }
         }
+        bidSum = sum;
         total.setText(Integer.toString(sum));
     }
 
     public void onContinuePressed(View v) {
         clearFocus();
+        if (bidSum == numTricks) {
+            if (game.isNoEven()) {
+                displayError(getString(R.string.no_even_toast));
+                return;
+            } else if (game.isCdnRule() && game.getLeading().equals(dealer)) {
+                displayError(getString(R.string.cdn_rule_toast));
+                return;
+            }
+        }
         for (int i = 1; i <= players.length; i++) {
             Player current = players[(dealerInt + i) % players.length];
             String bidString = bids[i - 1].getText().toString();

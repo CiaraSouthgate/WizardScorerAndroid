@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.util.Arrays;
-
 public class Final extends InGameActivity {
     private Player winner;
 
@@ -26,8 +24,7 @@ public class Final extends InGameActivity {
     }
 
     void getGameInfo() {
-        Arrays.sort(players);
-        winner = players[0];
+        winner = game.getLeading();
     }
 
     void setTitles() {

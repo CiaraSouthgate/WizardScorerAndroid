@@ -1,6 +1,7 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 import static com.ciarasouthgate.wizardscorekeeper.Constants.SAVE_FORMAT;
 
@@ -64,6 +65,12 @@ public class Game implements Comparable<Game> {
 
     public void updateSave() {
         this.lastSave = LocalDateTime.now().format(SAVE_FORMAT);
+    }
+
+    public Player getLeading() {
+        Player[] sorted = players.clone();
+        Arrays.sort(sorted);
+        return sorted[0];
     }
 
     @Override
