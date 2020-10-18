@@ -37,7 +37,7 @@ public class AlternateRules extends AppActivity {
         noEvenSwitch = findViewById(R.id.noEvenSwitch);
         oneToXSwitch = findViewById(R.id.oneToXSwitch);
 
-        appBar = findViewById(R.id.rulesAppBar);
+        appBar = findViewById(R.id.appBar);
         setAppBarMenu();
 
         // Read current rules values from SharedPreferences to set switches to appropriate positions
@@ -59,7 +59,7 @@ public class AlternateRules extends AppActivity {
         setListeners();
     }
 
-    void setAppBarMenu() {
+    private void setAppBarMenu() {
         appBar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == (R.id.backButton)) {
                 finish();

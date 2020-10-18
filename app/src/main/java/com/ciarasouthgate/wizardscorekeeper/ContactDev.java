@@ -5,13 +5,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Switch;
+
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class ContactDev extends AppCompatActivity {
-    Switch deviceInfo;
+    SwitchMaterial deviceInfo;
     Toolbar appBar;
 
     @Override
@@ -19,7 +20,7 @@ public class ContactDev extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_dev);
 
-        appBar = findViewById(R.id.rulesAppBar);
+        appBar = findViewById(R.id.appBar);
         appBar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == (R.id.backButton)) {
                 finish();

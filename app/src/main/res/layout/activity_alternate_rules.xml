@@ -54,7 +54,6 @@
                 android:minWidth="56sp" />
 
             <TextView
-                android:id="@+id/cdnRuleInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="3"
@@ -69,7 +68,6 @@
                 android:textSize="16sp" />
 
             <View
-                android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
                 android:layout_row="4"
@@ -105,7 +103,6 @@
                 android:minWidth="56sp" />
 
             <TextView
-                android:id="@+id/noEvenInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="6"
@@ -120,7 +117,6 @@
                 android:textSize="16sp" />
 
             <View
-                android:id="@+id/divider3"
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
                 android:layout_row="7"
@@ -128,7 +124,6 @@
                 android:background="?android:attr/listDivider" />
 
             <TextView
-                android:id="@+id/oneToXTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="8"
@@ -154,7 +149,6 @@
                 android:minWidth="56sp" />
 
             <TextView
-                android:id="@+id/oneToXInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="9"
@@ -169,7 +163,6 @@
                 android:textSize="16sp" />
 
             <View
-                android:id="@+id/divider4"
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
                 android:layout_row="11"
@@ -177,7 +170,6 @@
                 android:background="?android:attr/listDivider" />
 
             <TextView
-                android:id="@+id/addRuleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_row="12"
@@ -192,7 +184,6 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/contactButton"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

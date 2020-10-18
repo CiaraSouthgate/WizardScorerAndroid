@@ -46,7 +46,6 @@
                 tools:text="Round 1 of 10" />
 
             <TextView
-                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4sp"
@@ -77,7 +76,6 @@
                     app:srcCompat="@drawable/card" />
 
                 <TextView
-                    android:id="@+id/dealer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8sp"
@@ -127,7 +125,6 @@
                         android:layout_weight="2" />
 
                     <TextView
-                        android:id="@+id/currentScoreTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
@@ -139,7 +136,6 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/bidColLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
@@ -152,25 +148,21 @@
                 </TableRow>
 
                 <include
-                    android:id="@+id/bidsRow1"
                     layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/bidsRow2"
                     layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/bidsRow3"
                     layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/bidsRow4"
                     layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -178,7 +170,6 @@
                     tools:visibility="visible" />
 
                 <include
-                    android:id="@+id/bidsRow5"
                     layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -186,7 +177,6 @@
                     tools:visibility="visible" />
 
                 <include
-                    android:id="@+id/bidsRow6"
                     layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -200,7 +190,6 @@
                     android:weightSum="3">
 
                     <TextView
-                        android:id="@+id/totalText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_column="0"

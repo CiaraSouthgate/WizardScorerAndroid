@@ -6,7 +6,6 @@
     <string name="max_players">Maximum player count is 6</string>
     <string name="min_players">Minimum player count is 3</string>
     <string name="dealer_icon">Dealer icon</string>
-    <string name="round_num">Round %d of %d</string>
     <string name="dealer">Dealer</string>
     <string name="enter_bids">Enter Bids</string>
     <string name="player_bid">Player bid</string>
@@ -83,8 +82,6 @@
         The number of tricks bid is not allowed to equal the total number of bids in the round when
         the dealer is in the lead. The dealer must change their bid.
     </string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
     <string name="leave_game_title">Leave game</string>
     <string name="save_game_dialog">Would you like to save your game?</string>
     <string name="save">Save</string>

@@ -8,7 +8,6 @@
     android:weightSum="2">
 
     <TextView
-        android:id="@+id/finalPlayerLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
@@ -22,7 +21,6 @@
         tools:text="Player" />
 
     <TextView
-        android:id="@+id/finalPlayerScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="1"

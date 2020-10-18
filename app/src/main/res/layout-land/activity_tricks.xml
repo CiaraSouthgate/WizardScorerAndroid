@@ -55,7 +55,6 @@
                     tools:text="Round 1 of 10" />
 
                 <TextView
-                    android:id="@+id/tricksTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4sp"
@@ -86,7 +85,6 @@
                         app:srcCompat="@drawable/card" />
 
                     <TextView
-                        android:id="@+id/dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8sp"
@@ -126,7 +124,6 @@
                     android:weightSum="2">
 
                     <Button
-                        android:id="@+id/editBidsButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -185,7 +182,6 @@
                         android:layout_weight="2" />
 
                     <TextView
-                        android:id="@+id/currentScoreTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
@@ -196,7 +192,6 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/bidColLabel"
                         android:layout_width="50sp"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
@@ -208,7 +203,6 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/takenColLabel"
                         android:layout_width="50sp"
                         android:layout_height="match_parent"
                         android:layout_column="3"
@@ -222,40 +216,73 @@
                 </TableRow>
 
                 <include
-                    android:id="@+id/tricksRow1"
                     layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/tricksRow2"
                     layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/tricksRow3"
                     layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/tricksRow4"
                     layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/tricksRow5"
                     layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    android:id="@+id/tricksRow6"
                     layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:layout_span="2"
+                        android:layout_weight="2"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/bidp6"
+                        android:text="@string/total"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/trickTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="30sp"
+                        android:layout_weight="2"
+                        android:contentDescription="@string/player_bid"
+                        android:fontFamily="@font/lato"
+                        android:labelFor="@+id/bidp6"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="0" />
+                </TableRow>
             </TableLayout>
 
 

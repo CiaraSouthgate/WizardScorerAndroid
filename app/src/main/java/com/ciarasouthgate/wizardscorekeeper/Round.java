@@ -1,7 +1,7 @@
 package com.ciarasouthgate.wizardscorekeeper;
 
 public class Round {
-    private int bid;
+    private final int bid;
     private int taken;
     private int scoreDiff;
 
