@@ -7,7 +7,7 @@
     tools:context=".Tricks">
 
     <include
-        layout="@layout/in_game_appbar"
+        layout="@layout/appbar_in_game"
         android:id="@+id/appBarLayout"
         app:layout_constraintBottom_toTopOf="@id/tricksScrollView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -223,37 +223,37 @@
 
                 <include
                     android:id="@+id/tricksRow1"
-                    layout="@layout/tricks_table_row"
+                    layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/tricksRow2"
-                    layout="@layout/tricks_table_row"
+                    layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/tricksRow3"
-                    layout="@layout/tricks_table_row"
+                    layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/tricksRow4"
-                    layout="@layout/tricks_table_row"
+                    layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/tricksRow5"
-                    layout="@layout/tricks_table_row"
+                    layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/tricksRow6"
-                    layout="@layout/tricks_table_row"
+                    layout="@layout/table_row_tricks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </TableLayout>

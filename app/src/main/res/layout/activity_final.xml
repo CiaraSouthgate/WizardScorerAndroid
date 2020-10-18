@@ -7,7 +7,7 @@
     tools:context=".Final">
 
     <include
-        layout="@layout/in_game_appbar"
+        layout="@layout/appbar_in_game"
         android:id="@+id/appBarLayout"
         app:layout_constraintBottom_toTopOf="@id/finalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,37 +117,37 @@
 
                 <include
                     android:id="@+id/finalRow1"
-                    layout="@layout/final_table_row"
+                    layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/finalRow2"
-                    layout="@layout/final_table_row"
+                    layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/finalRow3"
-                    layout="@layout/final_table_row"
+                    layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/finalRow4"
-                    layout="@layout/final_table_row"
+                    layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/finalRow5"
-                    layout="@layout/final_table_row"
+                    layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/finalRow6"
-                    layout="@layout/final_table_row"
+                    layout="@layout/table_row_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

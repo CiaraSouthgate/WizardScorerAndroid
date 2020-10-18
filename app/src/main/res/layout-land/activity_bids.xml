@@ -7,7 +7,7 @@
     tools:context=".Bids">
 
     <include
-        layout="@layout/in_game_appbar"
+        layout="@layout/appbar_in_game"
         android:id="@+id/appBarLayout"
         app:layout_constraintBottom_toTopOf="@id/bidsScrollView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -195,37 +195,37 @@
 
                 <include
                     android:id="@+id/bidsRow1"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow2"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow3"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow4"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow5"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/bidsRow6"
-                    layout="@layout/bids_table_row"
+                    layout="@layout/table_row_bids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
