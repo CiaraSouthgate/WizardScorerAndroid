@@ -89,4 +89,7 @@
     <string name="zero_num">0</string>
     <string name="winner_icon">Winner icon</string>
     <string name="bid_over_max">You cannot bid more than the number of tricks in the round.</string>
+    <string name="delete">delete</string>
+    <string name="round_title">Round %d of %d</string>
+    <string name="no_saves">No saved games found.</string>
 </resources>

@@ -64,7 +64,7 @@ public abstract class InGameActivity extends AppActivity {
                     newGameDialog(getString(R.string.new_game)).show();
                     break;
                 case R.id.loadSaved:
-                    //TODO implement loading of saved games
+                    toLoadSavesActivity();
                     break;
                 case R.id.contact:
                     toContactActivity();
@@ -99,9 +99,7 @@ public abstract class InGameActivity extends AppActivity {
                     toGameSetup();
                 })
                 .setNegativeButton(getString(R.string.discard), (dialog, which) -> {
-                    savedGames.edit()
-                            .remove(game.getId())
-                            .apply();
+                    deleteSave(gameId);
                     toGameSetup();
                 })
                 .setNeutralButton(getString(R.string.cancel),

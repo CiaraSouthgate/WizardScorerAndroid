@@ -40,8 +40,7 @@ public abstract class BidsTricksActivity extends InGameActivity {
 
     void setTitles() {
         TextView roundTitle = findViewById(R.id.roundTitle);
-        String roundString = "Round " + currentRound + " of " + totalRounds;
-        roundTitle.setText(roundString);
+        roundTitle.setText(getString(R.string.round_title, currentRound, totalRounds));
 
         TextView dealerName = findViewById(R.id.dealerName);
         dealerName.setText(dealer.getName());

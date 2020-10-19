@@ -29,6 +29,16 @@ public abstract class AppActivity extends AppCompatActivity {
         savedGames = getSharedPreferences(SAVED_GAMES, MODE_PRIVATE);
     }
 
+    void setBackOnlyAppBar() {
+        appBar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == (R.id.backButton)) {
+                finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+            }
+            return true;
+        });
+    }
+
     void displayError(String error) {
         Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
     }
@@ -49,6 +59,12 @@ public abstract class AppActivity extends AppCompatActivity {
         return editor.commit();
     }
 
+    void deleteSave(String gameId) {
+        SharedPreferences.Editor editor = savedGames.edit();
+        editor.remove(gameId);
+        editor.apply();
+    }
+
     void clearFocus() {
         View v = getCurrentFocus();
         if (v != null)
@@ -62,6 +78,11 @@ public abstract class AppActivity extends AppCompatActivity {
 
     void toContactActivity() {
         startActivity(new Intent(getApplicationContext(), ContactDev.class));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
+
+    void toLoadSavesActivity() {
+        startActivity(new Intent(getApplicationContext(), LoadSavedGames.class));
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }

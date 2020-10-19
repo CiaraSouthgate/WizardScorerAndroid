@@ -8,8 +8,6 @@ import android.view.View;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
-import androidx.appcompat.widget.Toolbar;
-
 import static com.ciarasouthgate.wizardscorekeeper.Constants.CDN_RULE;
 import static com.ciarasouthgate.wizardscorekeeper.Constants.NO_EVEN;
 import static com.ciarasouthgate.wizardscorekeeper.Constants.ONE_TO_X;
@@ -18,8 +16,6 @@ import static com.ciarasouthgate.wizardscorekeeper.Constants.ONE_TO_X;
  * An activity that allows the user to adjust their game settings.
  */
 public class AlternateRules extends AppActivity {
-    Toolbar appBar;
-
     SwitchMaterial cdnRuleSwitch;
     SwitchMaterial noEvenSwitch;
     SwitchMaterial oneToXSwitch;
@@ -38,7 +34,7 @@ public class AlternateRules extends AppActivity {
         oneToXSwitch = findViewById(R.id.oneToXSwitch);
 
         appBar = findViewById(R.id.appBar);
-        setAppBarMenu();
+        setBackOnlyAppBar();
 
         // Read current rules values from SharedPreferences to set switches to appropriate positions
         cdnRuleActive = rulesPrefs.getBoolean(CDN_RULE, false);
@@ -57,16 +53,6 @@ public class AlternateRules extends AppActivity {
             cdnRuleSwitch.setEnabled(false);
 
         setListeners();
-    }
-
-    private void setAppBarMenu() {
-        appBar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == (R.id.backButton)) {
-                finish();
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-            }
-            return true;
-        });
     }
 
     /**
