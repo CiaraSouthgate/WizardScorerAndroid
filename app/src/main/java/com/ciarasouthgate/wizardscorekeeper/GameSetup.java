@@ -61,7 +61,7 @@ public class GameSetup extends AppActivity {
         appBar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.loadSaved:
-                    //TODO
+                    toLoadSavesActivity();
                     break;
                 case R.id.alternateRules:
                     startActivity(new Intent(getApplicationContext(), AlternateRules.class));

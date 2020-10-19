@@ -16,6 +16,9 @@ public final class Constants {
     public static final DateTimeFormatter PRINT_FORMAT =
             DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.SHORT);
 
+    private Constants() {
+    }
+
     static LocalDateTime stringToDate(String dateString) {
         return LocalDateTime.parse(dateString, SAVE_FORMAT);
     }

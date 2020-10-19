@@ -67,6 +67,10 @@ public class Game implements Comparable<Game> {
         this.lastSave = LocalDateTime.now().format(SAVE_FORMAT);
     }
 
+    public boolean isNewRound() {
+        return players[0].isRoundFinished();
+    }
+
     public Player getLeading() {
         Player[] sorted = players.clone();
         Arrays.sort(sorted);

@@ -26,6 +26,7 @@ public class Final extends InGameActivity {
 
     void getGameInfo() {
         winner = game.getLeading();
+        deleteSave(gameId);
     }
 
     void setTitles() {

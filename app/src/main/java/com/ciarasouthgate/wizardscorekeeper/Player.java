@@ -38,6 +38,10 @@ public class Player implements Comparable<Player> {
         return rounds.get(rounds.size() - 1).getBid();
     }
 
+    public boolean isRoundFinished() {
+        return rounds.get(rounds.size() - 1).isFinished();
+    }
+
     public void endRound(int taken) {
         Round activeRound = rounds.get(rounds.size() - 1);
         activeRound.setTaken(taken);

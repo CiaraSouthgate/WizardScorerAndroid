@@ -8,12 +8,8 @@ import android.view.View;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-public class ContactDev extends AppCompatActivity {
+public class ContactDev extends AppActivity {
     SwitchMaterial deviceInfo;
-    Toolbar appBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +17,7 @@ public class ContactDev extends AppCompatActivity {
         setContentView(R.layout.activity_contact_dev);
 
         appBar = findViewById(R.id.appBar);
-        appBar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == (R.id.backButton)) {
-                finish();
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-            }
-            return true;
-        });
+        setBackOnlyAppBar();
 
         deviceInfo = findViewById(R.id.deviceInfoSwitch);
     }

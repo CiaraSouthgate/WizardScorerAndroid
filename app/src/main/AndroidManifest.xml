@@ -8,6 +8,7 @@
         android:roundIcon="@drawable/wizard_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".LoadSavedGames"></activity>
         <activity android:name=".ContactDev" />
         <activity android:name=".AlternateRules" />
         <activity
